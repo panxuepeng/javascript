@@ -1,0 +1,50 @@
+.mod-dialog {
+	position: fixed;
+	left: 20px;
+	top: 20px;
+	z-index: 9999;
+	border: 1px solid #E1E1E1;
+ }
+
+.mod-dialog-title {
+	height: 30px;
+	font-size: 16px;
+	line-height: 30px;
+	border-bottom: 1px solid #E1E1E1;
+	color: #4d4d4d;
+	text-indent: 10px;
+	background-color: #f9f9f9;
+}
+
+.mod-dialog-content {
+    padding:20px;
+    font-size: 12px;
+}
+
+.mod-dialog-close {
+    color: #999;
+    cursor: pointer;
+    display: block;
+    font-family: tahoma;
+    font-size: 24px;
+    font-weight: bold;
+    height: 18px;
+    line-height: 14px;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    text-decoration: none;
+}
+
+.mod-dialog-close:hover {
+    color: #666;
+}
+
+.mod-dialog-buttons {
+    text-align: right;
+    padding: 5px 10px 10px;
+}
+
+.mod-dialog-buttons input {
+    margin-right:5px;
+}

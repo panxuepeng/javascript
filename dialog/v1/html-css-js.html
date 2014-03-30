@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dialog 功能实现</title>
+  <link rel="stylesheet" href="mod-dialog.css">
+</head>
+<body>
+
+<div class="mod-dialog" style="width:400px;">
+	<div class="mod-dialog-title">提示</div>
+	<div class="mod-dialog-content">内容</div>
+	<div class="mod-dialog-buttons">
+		<input type="button" name="ok" value="确定">
+		<input type="button" name="cancle" value="取消">
+	</div>
+	<a title="关闭" class="mod-dialog-close" name="close">×</a>
+</div>
+
+<script src="../../jquery/jquery-1.11.0.min.js"></script>
+<script src="dialog.js"></script>
+<script>
+!function($){
+
+$('input[name=ok]').click(function(){
+	dialog('点击 确定 按钮')
+})
+
+$('input[name=cancle]').click(function(){
+	dialog({
+		title: '系统提示'
+		, content: '点击 <b>取消</b> 按钮'
+		, width: 400
+		, height: 100
+	})
+})
+
+
+}(jQuery)
+</script>
+
+</body>
+</html>
