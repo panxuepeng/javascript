@@ -3,7 +3,7 @@
  * 
  * 1. 构造弹窗html，添加到body尾部
  * 2. 计算显示位置
- * 3. 绑定确定、取消、关闭按钮事件(未实现)
+ * 3. 绑定确定、取消、关闭按钮事件
  */
 
 // 外层使用匿名即时函数包裹
@@ -18,8 +18,12 @@ var defaults = {
 	, width: 350
 	, height: 'auto'
 	, autoClose: 0
-	, ok: ['确定', function(){}]
-	, cancel: ['取消']
+	, ok: ['确定', function() {
+		this.close()
+	}]
+	, cancel: ['取消', function() {
+		this.close()
+	}]
 }
 
 var dialogHtml = '<div class="mod-dialog" style="left:-2000px;">'
@@ -27,7 +31,7 @@ var dialogHtml = '<div class="mod-dialog" style="left:-2000px;">'
 	+ '<div class="mod-dialog-content" style="width: %width%px; height: %height%px; overflow:hidden;">%content%</div>'
 	+ '<div class="mod-dialog-buttons">'
 		+ '<input type="button" name="ok" value="%ok.value%">'
-		+ '<input type="button" name="cancel" value="%cancel.value%">'
+		+ '<input type="button" name="close" value="%cancel.value%">'
 	+ '</div>'
 	+ '<a title="关闭" class="mod-dialog-close" name="close">×</a>'
 + '</div>'
@@ -35,11 +39,13 @@ var dialogHtml = '<div class="mod-dialog" style="left:-2000px;">'
 // @option string 内容
 // @option object 配置项
 function Dialog(option) {
+	
 	if ( typeof option === 'string' ) {
 		option = {content: option}
 	}
 	
 	option = $.extend({}, defaults, option)
+	this.option = option
 	
 	var html = dialogHtml
 		.replace('%title%', option.title)
@@ -50,9 +56,12 @@ function Dialog(option) {
 		.replace('%cancel.value%', option.cancel[0])
 		
 	// 将弹窗添加到body
+	
 	var div = document.createElement('div')
 	div.innerHTML = html
 	document.body.appendChild(div)
+	
+	//$('body').append(html)
 	
 	var o = $(div).children()
 	
@@ -68,9 +77,32 @@ function Dialog(option) {
 	
 	o.css(pos)
 	
-	// 绑定事件
-	// ...
+	this.$el = o
+	
+	o.data('dialog', this)
+	
 }
+
+// 事件委托
+dom.delegate('.mod-dialog', 'click', function(e) {
+
+	var target = $(e.target)
+		, name = target.attr('name')
+		, dialog = $(this).data('dialog')
+		
+	if( name && dialog && /^(close|ok)$/i.test(name) && dialog[name] ) {
+		return dialog[name]()
+	}
+})
+
+$.extend(Dialog.prototype, {
+	ok: function() {
+		this.option.ok[1].call(this)
+	},
+	close: function() {
+		this.$el.remove()
+	}
+})
 
 // 外部暴露接口
 window.dialog = function (option) {
