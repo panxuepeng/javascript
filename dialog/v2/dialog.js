@@ -9,7 +9,11 @@
 // 外层使用匿名即时函数包裹
 ~function ($, window, document) {
 
-var win = $(window), dom = $(document)
+var win = $(window)
+	, dom = $(document)
+	
+	// 弹窗的累计个数
+	, dialogCount = 1
 
 // 默认值
 var defaults = {
@@ -26,9 +30,9 @@ var defaults = {
 	}]
 }
 
-var dialogHtml = '<div class="mod-dialog" style="left:-2000px;">'
+var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="left:-2000px; width: %width%px;">'
 	+ '<div class="mod-dialog-title">%title%</div>'
-	+ '<div class="mod-dialog-content" style="width: %width%px; height: %height%px; overflow:hidden;">%content%</div>'
+	+ '<div class="mod-dialog-content" style="height: %height%px; overflow:hidden;">%content%</div>'
 	+ '<div class="mod-dialog-buttons">'
 		+ '<input type="button" name="ok" value="%ok.value%">'
 		+ '<input type="button" name="close" value="%cancel.value%">'
@@ -48,6 +52,7 @@ function Dialog(option) {
 	this.option = option
 	
 	var html = dialogHtml
+		.replace('%dialogCount%', dialogCount)
 		.replace('%title%', option.title)
 		.replace('%width%', option.width)
 		.replace('%height%', option.height)
@@ -56,14 +61,9 @@ function Dialog(option) {
 		.replace('%cancel.value%', option.cancel[0])
 		
 	// 将弹窗添加到body
+	$('body').append(html)
 	
-	var div = document.createElement('div')
-	div.innerHTML = html
-	document.body.appendChild(div)
-	
-	//$('body').append(html)
-	
-	var o = $(div).children()
+	var o = $('#mod-dialog-'+dialogCount)
 	
 	// 计算显示位置，上下左右居中
 	var winW = win.width()
@@ -81,6 +81,7 @@ function Dialog(option) {
 	
 	o.data('dialog', this)
 	
+	dialogCount += 1
 }
 
 // 事件委托

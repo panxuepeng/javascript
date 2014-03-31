@@ -9,7 +9,8 @@
 // 外层使用匿名即时函数包裹
 ~function ($, window, document) {
 
-var win = $(window), dom = $(document)
+var win = $(window)
+	, dom = $(document)
 
 // 默认值
 var defaults = {
@@ -18,16 +19,16 @@ var defaults = {
 	, width: 350
 	, height: 'auto'
 	, autoClose: 0
-	, ok: ['确定', function(){}]
+	, ok: ['确定']
 	, cancel: ['取消']
 }
 
-var dialogHtml = '<div class="mod-dialog" style="left:-2000px;">'
+var dialogHtml = '<div class="mod-dialog" style="left:-2000px; width: %width%px;">'
 	+ '<div class="mod-dialog-title">%title%</div>'
-	+ '<div class="mod-dialog-content" style="width: %width%px; height: %height%px; overflow:hidden;">%content%</div>'
+	+ '<div class="mod-dialog-content" style="height: %height%px; overflow:hidden;">%content%</div>'
 	+ '<div class="mod-dialog-buttons">'
 		+ '<input type="button" name="ok" value="%ok.value%">'
-		+ '<input type="button" name="cancel" value="%cancel.value%">'
+		+ '<input type="button" name="close" value="%cancel.value%">'
 	+ '</div>'
 	+ '<a title="关闭" class="mod-dialog-close" name="close">×</a>'
 + '</div>'
@@ -35,13 +36,16 @@ var dialogHtml = '<div class="mod-dialog" style="left:-2000px;">'
 // @option string 内容
 // @option object 配置项
 function Dialog(option) {
+	
 	if ( typeof option === 'string' ) {
 		option = {content: option}
 	}
 	
 	option = $.extend({}, defaults, option)
+	this.option = option
 	
 	var html = dialogHtml
+		.replace('%dialogCount%', dialogCount)
 		.replace('%title%', option.title)
 		.replace('%width%', option.width)
 		.replace('%height%', option.height)
@@ -50,11 +54,9 @@ function Dialog(option) {
 		.replace('%cancel.value%', option.cancel[0])
 		
 	// 将弹窗添加到body
-	var div = document.createElement('div')
-	div.innerHTML = html
-	document.body.appendChild(div)
+	$('body').append(html)
 	
-	var o = $(div).children()
+	var o = $('#mod-dialog-'+dialogCount)
 	
 	// 计算显示位置，上下左右居中
 	var winW = win.width()
@@ -67,10 +69,8 @@ function Dialog(option) {
 	pos.top = (winH - dialogH) / 2
 	
 	o.css(pos)
-	
-	// 绑定事件
-	// ...
 }
+
 
 // 外部暴露接口
 window.dialog = function (option) {
