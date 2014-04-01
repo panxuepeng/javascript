@@ -3,19 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Dialog 功能实现</title>
-  <link rel="stylesheet" href="../v1/mod-dialog.css">
+  <link rel="stylesheet" href="mod-dialog.css">
 </head>
 <body>
 
-<div class="mod-dialog" style="width:400px;">
-	<div class="mod-dialog-title">提示</div>
-	<div class="mod-dialog-content">内容</div>
-	<div class="mod-dialog-buttons">
-		<input type="button" name="ok" value="确定">
-		<input type="button" name="close" value="取消">
-	</div>
-	<a title="关闭" class="mod-dialog-close" name="close">×</a>
-</div>
+<input type="button" name="ok" value="弹窗1">
+<input type="button" name="close" value="弹窗2">
+
 <div id="log" style="height:1000px;"></div>
 <script src="../../jquery/jquery-1.11.0.min.js"></script>
 <script src="dialog.js"></script>
@@ -33,7 +27,19 @@ $('input[name=close]').click(function(){
 		, content: '点击 <b>取消</b> 按钮，自动关闭'
 		, width: 400
 		, height: 100
-		, autoClose: 2000
+		, lock: true
+		, ok: {callback: function() {
+		
+			console.log('ok')
+			
+			this.close()
+		}}
+		, cancel: {callback: function() {
+		
+			console.log('cancel')
+			
+			this.close()
+		}}
 	})
 })
 

@@ -3,7 +3,24 @@
  * 
  * 1. 构造弹窗html，添加到body尾部
  * 2. 计算显示位置
- * 3. 正常关闭、自动关闭
+ *
+ *
+ * 3. 绑定确定、取消、关闭按钮事件
+ * 4. 可以自动关闭
+ *
+ *
+ * 5. 浏览器窗口改变时可以自动调整到上下左右居中位置
+ *    1) 在window的resize事件，重新计算位置
+ *    2) 将left将像素单位改为百分比，同时使用 margin-left，top同理 （选择此方式）
+ * 
+ * 6. 增加确定和关闭事件，以在用户点击确定或关闭按钮时执行特殊操作
+ *
+ *
+ * 7. 遮罩层
+ *
+ *
+ * #8. 窗口实现简单的拖动效果，能动就行
+ *
  */
 
 // 外层使用匿名即时函数包裹
@@ -22,8 +39,14 @@ var defaults = {
 	, width: 350
 	, height: 'auto'
 	, autoClose: 0
-	, ok: ['确定']
-	, cancel: ['取消']
+	, ok: {text:'确定'}
+	, cancel: {text:'取消'}
+	
+	// 遮罩层
+	, lock: false
+	
+	// 是否可拖动
+	, drag: false
 }
 
 var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="left:-2000px; width: %width%px;">'
@@ -45,7 +68,7 @@ function Dialog(option) {
 		option = {content: option}
 	}
 	
-	option = $.extend({}, defaults, option)
+	option = $.extend(true, {}, defaults, option)
 	self.option = option
 	
 	var html = dialogHtml
@@ -54,8 +77,8 @@ function Dialog(option) {
 		.replace('%width%', option.width)
 		.replace('%height%', option.height)
 		.replace('%content%', option.content)
-		.replace('%ok.value%', option.ok[0])
-		.replace('%cancel.value%', option.cancel[0])
+		.replace('%ok.value%', option.ok.text)
+		.replace('%cancel.value%', option.cancel.text)
 		
 	// 将弹窗添加到body
 	$('body').append(html)
@@ -69,8 +92,11 @@ function Dialog(option) {
 		, dialogH = o.outerHeight()
 		, pos={}
 	
-	pos.left = (winW - dialogW) / 2
-	pos.top = (winH - dialogH) / 2
+	// 窗口大小改变时，可以自动居中
+	pos.left = '50%'
+	pos.top = '50%'
+	pos.marginLeft = -(dialogW / 2)
+	pos.marginTop = -(dialogH / 2)
 	
 	o.css(pos)
 	
@@ -87,9 +113,16 @@ function Dialog(option) {
 			self.close()
 		}, option.autoClose)
 	}
+	
+	// 遮罩层
+	if ( option.lock ) {
+		$('body').append('<div class="mod-overlay"></div>')
+	}
 }
 
 // 事件委托
+
+// 窗口点击事件
 dom.delegate('.mod-dialog', 'click', function(e) {
 
 	var target = $(e.target)
@@ -101,12 +134,69 @@ dom.delegate('.mod-dialog', 'click', function(e) {
 	}
 })
 
+// 窗口拖动效果
+
+function mousemove(e) {
+	var left = e.pageX
+	var top = e.clientY
+	
+	$(this).css({
+		left: left
+		, top:  top
+		// 必须清除margin，否则会出现偏移
+		, margin: 0 
+	})
+}
+
+function mouseup() {
+	dom.unbind('mousemove.drag')
+	.unbind('mouseup.drag')
+	.unbind("selectstart.drag")
+}
+
+dom.delegate('.mod-dialog-title', 'mousedown', function() {
+	var self = this
+	var panel = $(this).closest('.mod-dialog')
+	var dialog = panel.data('dialog')
+	
+	if ( dialog.option.drag ) {
+		
+		dom.bind('mousemove.drag', function(e) {
+			mousemove.call(panel, e)
+			
+		}).bind('mouseup.drag', function(e) {
+		
+			mouseup.call(panel, e)
+			
+		}).bind("selectstart.drag", function() {
+			return false
+		})
+		
+	}
+})
+
 $.extend(Dialog.prototype, {
 	ok: function() {
-		this.$el.remove()
+		if ( typeof this.option.ok.callback === 'function' ) {
+			this.option.ok.callback.call(this)
+			// 和 this.option.ok.callback() 有什么区别？
+		} else {
+			this.close()
+		}
+		
 	},
 	cancel: function() {
+		if ( typeof this.option.cancel.callback === 'function' ) {
+			this.option.cancel.callback.call(this)
+		} else {
+			this.close()
+		}
+	},
+	close: function() {
 		this.$el.remove()
+		
+		// 同时删除遮罩层
+		$('.mod-overlay').remove()
 	}
 })
 
