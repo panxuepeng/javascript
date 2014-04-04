@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dialog 功能实现</title>
+  <link rel="stylesheet" href="../v4/mod-dialog.css">
+</head>
+<body>
+
+<input type="button" name="ok" value="弹窗1">
+<input type="button" name="close" value="弹窗2">
+
+<div id="log" style="height:1000px;"></div>
+<script src="../../jquery/jquery-1.11.0.min.js"></script>
+<script src="dialog.js"></script>
+
+<script>
+!function($){
+
+$('input[name=ok]').click(function() {
+	dialog('点击 确定 按钮')
+})
+
+$('input[name=close]').click(function() {
+	var o = dialog({
+		title: '系统提示'
+		, content: '点击 <b>取消</b> 按钮，自动关闭'
+		, width: 400
+		, height: 100
+		, lock: false
+		, drag: true
+		, ok: {callback: function() {
+		
+			console.log('ok')
+			
+			this.close()
+		}}
+		, cancel: {callback: function() {
+		
+			console.log('cancel')
+			
+			this.close()
+		}}
+	})
+	
+	o.title('我是修改后的标题').content('我是修改后的内容')
+	
+	setTimeout(function(){
+		o.content('<img src="a.jpg" width="800">')
+	}, 2000)
+})
+
+}(jQuery)
+</script>
+
+</body>
+</html>
