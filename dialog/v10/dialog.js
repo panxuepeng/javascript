@@ -27,7 +27,9 @@
  *
  * 11. 支持通过接口修改标题和内容
  *
- * # 12. 窗口大小支持根据内容自适应（计算内容的宽和高）
+ * 12. 窗口大小支持根据内容自适应（计算内容的宽和高）
+ *
+ * # 13. 窗口主要部分可自定义样式
  *
  */
 
@@ -58,6 +60,21 @@ var defaults = {
 	
 	// 是否可拖动
 	, drag: false
+	
+	// 自定义样式，方便样式微调
+	// style: {title: {key:value, key2:value2, .....}}
+	/*
+	style: {
+		'dialog': null
+		, 'title': null
+		, 'content': null
+		, 'bottom': null
+		, 'ok': null
+		, 'cancel': null
+		, 'close': null
+	}
+	*/
+	, style: null
 }
 
 setTimeout(function() {
@@ -69,12 +86,12 @@ setTimeout(function() {
 // width 样式放到最外层的div上，否则ie7下标题div宽度会适应文字的宽度
 // height 样式放到内容div上，否则内容区域会使用内容的真实高度，按钮div会跟上去
 // 内容区域的边距使用padding
-var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="width: %width%px; left:-2000px;">'
+var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog mod-dialog-dialog" style="width: %width%px; left:-2000px;">'
 	+ '<div class="mod-dialog-title">%title%</div>'
 	+ '<div class="mod-dialog-content" style="height: %height%px; padding:%padding%;">%content%</div>'
 	+ '<div class="mod-dialog-bottom">'
-		+ '<input type="button" name="ok" value="%ok.value%">'
-		+ '<input type="button" name="cancel" value="%cancel.value%">'
+		+ '<input class="mod-dialog-ok" type="button" name="ok" value="%ok.value%">'
+		+ '<input class="mod-dialog-cancel" type="button" name="cancel" value="%cancel.value%">'
 	+ '</div>'
 	+ '<a title="关闭" class="mod-dialog-close" name="cancel">×</a>'
 + '</div>'
@@ -105,6 +122,14 @@ function Dialog(option) {
 	$('#'+ContainerId).append(html)
 	
 	var o = $('#mod-dialog-'+dialogCount)
+	
+	// 设置自定义样式
+	if (option.style && typeof option.style === "object") {
+		for (var name in option.style) {
+			var s = option.style[name]
+			if(s) o.find('.mod-dialog-'+name).css(s)
+		}
+	}
 	
 	// 计算显示位置，上下左右居中
 	var winW = win.width()

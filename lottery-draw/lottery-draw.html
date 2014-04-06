@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>抽奖 demo1</title>
+  <style>
+  .point {position: absolute; background-color:#fff; overflow:hidden; color:#333; transform: rotateY(180deg); }
+  </style>  
+</head>
+<body>
+
+
+<script src="../jquery/jquery-1.11.0.min.js"></script>
+<script>
+!function($) {
+
+var win = $(window)
+var maxWidth = win.width() - 90
+var maxHeight = win.height() - 30
+var nameList = []
+
+// 随机数
+function rand(min, max) {
+	return Math.round(Math.random() * (max - min)) + min
+}
+
+// 随机点
+function randPoint() {
+	return {left: rand(0, maxWidth), top: rand(0, maxHeight)}
+}
+
+// 初始化姓名列表
+// @names string
+// @x int
+function init(names, x) {
+	if (localStorage.names) {
+		names = localStorage.names
+	} else {
+		names = names.replace(/\s/g, '')
+		var arr = []
+		for (var i=0; i < x; i++) {
+			arr.push(names)
+		}
+		names = arr.join(',')
+		
+		localStorage.names = names
+	}
+	
+	nameList = names.split(',')
+	
+}
+
+// 绘制
+function drawNames(names) {
+	for(var i= names.length - 1; i >= 0 ; i--) {
+		var el = document.createElement('div')
+		$(el).addClass('point').css(randPoint()).html(names[i]).appendTo('body')
+	}
+
+}
+
+// 开始
+function start() {
+	var point = $('.point')
+	
+	if ( point.length > 1 ) {
+	
+		var index = rand(0, point.length)
+		point.eq(index).remove()
+		
+		setTimeout(function() {
+			start()
+		}, 30)
+		
+	} else {
+		// 
+		var name = point.text()
+		
+		for (var i=0, len = nameList.length; i < len; i++) {
+			if ( name === nameList[i] ) {
+				// delete nameList[i] // 这种方式，数组的长度不会变化
+				
+				console.log(nameList.splice(i, 1))
+				
+				break
+			}
+		}
+		
+		if ( nameList.length ) {
+			localStorage.names = nameList.join(',')
+			console.log(localStorage.names)
+		} else {
+			delete localStorage.names
+		}
+		// 将其掉落，然后移动到中心位置
+		setTimeout(function() {
+			point.animate({top: maxHeight, 'font-size':20}, 100, function() {
+				point.animate({left: maxWidth/2, top: maxHeight/2 - 50, 'font-size':50}, 500)
+			})
+		}, 500)
+		
+	}
+}
+
+// 
+init('浩浩,咪咪,琦琦,睿睿,明明,冬冬,鹏鹏,萱萱,扬扬,嘉嘉,帅帅,璐璐,楠楠,蒙蒙,星星,雯雯,恬恬,元元,菲菲,彤彤,飞飞,然然,盈盈,超超,月月,娇娇,姗姗,冉冉,轩轩,童童,雷雷,京京,舟舟,蓉蓉,上上,熙熙,健健,新新,冉冉,牛牛,聪聪,宁宁,远远,开开,倩倩,双双,妮妮,华华,兰兰,越越,南南,铭铭,淼淼,波波,盼盼,蕾蕾,伟伟,宝贝儿,小甜甜,小豆丁,小燕子,小豆豆,小虎子,婉儿,虎虎,静静,丁丁,小精灵,小贝贝,小鱼儿,小猫咪,小石头', 1)
+drawNames(nameList)
+
+setTimeout(function() {
+	start()
+}, 2000)
+
+}(jQuery)
+</script>
+</body>
+</html>

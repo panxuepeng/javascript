@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Dialog 功能实现</title>
-  <link rel="stylesheet" href="mod-dialog.css">
+  <link rel="stylesheet" href="../v9/mod-dialog.css">
 </head>
 <body>
 
@@ -41,13 +41,14 @@ $('input[name=close]').click(function() {
 			
 			this.close()
 		}}
+		, style: {
+			'dialog': {}
+			, 'title': {}
+			, 'content': {}
+			, 'bottom': {}
+			, 'close': {display:'none'}
+		}
 	})
-	
-	o.title('我是修改后的标题').content('我是修改后的内容')
-	
-	setTimeout(function(){
-		o.content('<img src="a.jpg" width="600" height="360">')
-	}, 5000)
 })
 
 }(jQuery)
