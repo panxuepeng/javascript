@@ -43,7 +43,7 @@ var win = $(window)
 	// 弹窗的累计个数
 	, dialogCount = 1
 	
-	zIndex = 10001
+	, zIndex = 10001
 
 // 默认值
 var defaults = {
@@ -61,7 +61,7 @@ var defaults = {
 	// 是否可拖动
 	, drag: false
 	
-	// 自定义样式，方便样式微调
+	// 自定义窗口各部分样式，方便样式微调
 	// style: {title: {key:value, key2:value2, .....}}
 	/*
 	style: {
@@ -127,7 +127,15 @@ function Dialog(option) {
 	if (option.style && typeof option.style === "object") {
 		for (var name in option.style) {
 			var s = option.style[name]
-			if(s) o.find('.mod-dialog-'+name).css(s)
+			
+			if (s) {
+				if ( name === 'dialog' ) {
+					o.css(s)
+				} else {
+					o.find('.mod-dialog-'+name).css(s)
+				}
+				
+			}
 		}
 	}
 	
@@ -211,8 +219,11 @@ function mouseup() {
 	.unbind("selectstart.drag")
 }
 
+// 记录点击的点相对窗口左上角的偏移
+// 以便于拖动时以点击的点为中心移动窗口
 var draggingOffset
 
+// 窗口拖动相关事件
 dom.delegate('.mod-dialog-title', 'mousedown', function(e) {
 	var self = this
 	var panel = $(this).closest('.mod-dialog')
@@ -316,7 +327,7 @@ function getContentSize(html) {
 	td.append(html)
 	var val = {width: td.outerWidth(true), height: td.height()}
 	td.empty()
-	console.log(val)
+	
 	return val
 }
 

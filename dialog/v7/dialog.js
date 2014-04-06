@@ -36,7 +36,7 @@ var win = $(window)
 	// 弹窗的累计个数
 	, dialogCount = 1
 	
-	zIndex = 10001
+	, zIndex = 10001
 
 // 默认值
 var defaults = {

@@ -27,19 +27,33 @@
  *
  * 11. 支持通过接口修改标题和内容
  *
- * # 12. 窗口大小支持根据内容自适应（计算内容的宽和高）
+ * 12. 窗口大小支持根据内容自适应（计算内容的宽和高）
+ *
+ * 13. 窗口主要部分可自定义样式
+ * 
+ * #14. 代码优化
  *
  */
 
 // 外层使用匿名即时函数包裹
 ~function ($, window, document) {
 
+"use strict"
+
+var ID = 'mod-dialog'
+
+if ( window[ID] ) {
+	return
+}
+
+window[ID] = true
+
 var win = $(window)
 	, dom = $(document)
 	, ContainerId = 'container-mod-dialog'
 	
 	// 弹窗的累计个数
-	, dialogCount = 1
+	, dialogCount = 0
 	
 	, zIndex = 10001
 
@@ -58,23 +72,41 @@ var defaults = {
 	
 	// 是否可拖动
 	, drag: false
+	
+	// 自定义窗口各部分样式，方便样式微调
+	// style: {title: {key:value, key2:value2, .....}}
+	/*
+	style: {
+		'dialog': null
+		, 'title': null
+		, 'content': null
+		, 'bottom': null
+		, 'ok': null
+		, 'cancel': null
+		, 'close': null
+	}
+	*/
+	, style: null
 }
 
 setTimeout(function() {
-	// 所有table都放到此区域
-	$('body').append('<div id="'+ContainerId+'"><table><tr><td></td></tr></table></div>')
+	// 所有弹窗都放到此区域
+	// 注意避免可能的重复添加
+	if ( !$('#'+ContainerId).length ) {
+		$('body').append('<div id="'+ContainerId+'"><table><tr><td></td></tr></table></div>')
+	}
 })
 
 // 注意：
 // width 样式放到最外层的div上，否则ie7下标题div宽度会适应文字的宽度
 // height 样式放到内容div上，否则内容区域会使用内容的真实高度，按钮div会跟上去
 // 内容区域的边距使用padding
-var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="width: %width%px; left:-2000px;">'
+var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog mod-dialog-dialog" style="width: %width%px; left:-2000px;">'
 	+ '<div class="mod-dialog-title">%title%</div>'
 	+ '<div class="mod-dialog-content" style="height: %height%px; padding:%padding%;">%content%</div>'
 	+ '<div class="mod-dialog-bottom">'
-		+ '<input type="button" name="ok" value="%ok.value%">'
-		+ '<input type="button" name="cancel" value="%cancel.value%">'
+		+ '<input class="mod-dialog-ok" type="button" name="ok" value="%ok.value%">'
+		+ '<input class="mod-dialog-cancel" type="button" name="cancel" value="%cancel.value%">'
 	+ '</div>'
 	+ '<a title="关闭" class="mod-dialog-close" name="cancel">×</a>'
 + '</div>'
@@ -92,6 +124,29 @@ function Dialog(option) {
 	option = $.extend(true, {}, defaults, option)
 	self.option = option
 	
+	// 构建弹窗
+	var $el = Dialog.build(option)
+	
+	// 设置自定义样式
+	Dialog.setCss($el, option)
+	
+	// 计算显示位置，上下左右居中
+	Dialog.setPosition($el, option)
+	
+	$el.data('dialog', self)
+	self.$el = $el
+	
+	// 自动关闭
+	Dialog.autoClose(self, option)
+	
+	// 遮罩层
+	Dialog.lock(self, option)
+}
+
+// 构建弹窗
+Dialog.build = function(option) {
+	dialogCount += 1
+	
 	var html = dialogHtml
 		.replace('%dialogCount%', dialogCount)
 		.replace('%title%', option.title)
@@ -104,13 +159,33 @@ function Dialog(option) {
 	// 将弹窗添加到body
 	$('#'+ContainerId).append(html)
 	
-	var o = $('#mod-dialog-'+dialogCount)
-	
-	// 计算显示位置，上下左右居中
+	return $('#mod-dialog-'+dialogCount)
+}
+
+// 设置自定义样式
+Dialog.setCss = function($el, option) {
+	if (option.style && typeof option.style === "object") {
+		for (var name in option.style) {
+			var s = option.style[name]
+			
+			if (s) {
+				if ( name === 'dialog' ) {
+					$el.css(s)
+				} else {
+					$el.find('.mod-dialog-'+name).css(s)
+				}
+				
+			}
+		}
+	}
+}
+
+// 弹窗定位
+Dialog.setPosition = function($el, option) {
 	var winW = win.width()
 		, winH = win.height()
-		, dialogW = o.outerWidth()
-		, dialogH = o.outerHeight()
+		, dialogW = $el.outerWidth()
+		, dialogH = $el.outerHeight()
 		, pos={}
 	
 	// 窗口大小改变时，可以自动居中
@@ -122,27 +197,26 @@ function Dialog(option) {
 	zIndex += 1
 	pos.zIndex = zIndex
 	
-	o.css(pos)
-	
-	self.$el = o
-	
-	o.data('dialog', self)
-	
-	dialogCount += 1
-	
-	// 自动关闭
+	$el.css(pos)
+}
+
+// 自动关闭
+Dialog.autoClose = function(self, option) {
 	if ( option.autoClose ) {
 		setTimeout(function() {
-			// 这里使用 this.close() 可以吗，为什么？
+			// 这里使用 this.close() 可以吗
 			self.close()
 		}, option.autoClose)
 	}
-	
-	// 遮罩层
+}
+
+// 遮罩层锁定
+Dialog.lock = function(self, option) {
 	if ( option.lock ) {
 		$('body').append('<div class="mod-overlay"></div>')
 	}
 }
+
 
 // 事件委托
 
@@ -186,8 +260,11 @@ function mouseup() {
 	.unbind("selectstart.drag")
 }
 
+// 记录点击的点相对窗口左上角的偏移
+// 以便于拖动时以点击的点为中心移动窗口
 var draggingOffset
 
+// 窗口拖动相关事件
 dom.delegate('.mod-dialog-title', 'mousedown', function(e) {
 	var self = this
 	var panel = $(this).closest('.mod-dialog')
@@ -291,7 +368,7 @@ function getContentSize(html) {
 	td.append(html)
 	var val = {width: td.outerWidth(true), height: td.height()}
 	td.empty()
-	console.log(val)
+	
 	return val
 }
 
