@@ -2,14 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Dialog 功能实现</title>
+  <title>Dialog Demo</title>
   <link rel="stylesheet" href="../v9/mod-dialog.css">
 </head>
 <body>
-
-<input type="button" name="ok" value="弹窗1">
-<input type="button" name="close" value="弹窗2">
-
 <div id="log" style="height:1000px;"></div>
 <script src="../../jquery/jquery-1.11.0.min.js"></script>
 <script src="dialog.js"></script>
@@ -17,42 +13,37 @@
 <script>
 !function($){
 
-$('input[name=ok]').click(function() {
-	dialog('点击 确定 按钮')
-})
-
-$('input[name=close]').click(function() {
-	var o = dialog({
-		title: '系统提示'
-		, content: '点击 <b>取消</b> 按钮，自动关闭'
-		, width: 400
-		, height: 100
-		, lock: false
-		, drag: true
-		, ok: {callback: function() {
+var o = dialog({
+	title: '笑话'
+	, content: '去银行取钱，对柜台业务员说：取1500！ <br>业务员：没那么多。 <br>我（惊讶，疑问）：那你看看别的窗口有吗？ <br>业务员（一脸无奈）：是你卡里没那么多！'
+	, width: 400
+	, height: 100
+	, lock: false
+	, drag: true
+	, ok: {callback: function() {
+	
+		console.log('ok')
 		
-			console.log('ok')
-			
-			this.close()
-		}}
-		, cancel: {callback: function() {
-		
-			console.log('cancel')
-			
-			this.close()
-		}}
-		, style: {
-			'dialog': {'box-shadow': '5px 5px 20px #666'}
-			, 'title': {'font-weight': 'bold', cursor: 'default'}
-			, 'content': {}
-			, 'bottom': {}
-			, 'close': {}
-		}
-	})
+		// 返回 false 禁止窗口关闭
+		return false
+	}}
+	, cancel: {callback: function() {
+	
+		console.log('cancel')
+		// 返回 false 禁止窗口关闭
+		// return false
+	}}
+	, style: {
+		'dialog': {'box-shadow': '5px 5px 20px #666'}
+		, 'title': {'font-weight': 'bold', cursor: 'default'}
+		, 'content': {'font-size': '14px'}
+		, 'bottom': {}
+		, 'close': {}
+	}
 })
 
 }(jQuery)
 </script>
-
+<br>
 </body>
 </html>

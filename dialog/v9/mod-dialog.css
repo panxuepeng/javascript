@@ -19,9 +19,10 @@
 }
 
 .mod-dialog-content {
-    padding:20px;
+    padding: 20px;
     font-size: 12px;
-	overflow:hidden;
+	overflow: hidden;
+	line-height: 150%;
 }
 
 .mod-dialog-close {

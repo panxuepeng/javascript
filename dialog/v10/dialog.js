@@ -86,7 +86,7 @@ setTimeout(function() {
 // width 样式放到最外层的div上，否则ie7下标题div宽度会适应文字的宽度
 // height 样式放到内容div上，否则内容区域会使用内容的真实高度，按钮div会跟上去
 // 内容区域的边距使用padding
-var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog mod-dialog-dialog" style="width: %width%px; left:-2000px;">'
+var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="width: %width%px; left:-2000px;">'
 	+ '<div class="mod-dialog-title">%title%</div>'
 	+ '<div class="mod-dialog-content" style="height: %height%px; padding:%padding%;">%content%</div>'
 	+ '<div class="mod-dialog-bottom">'

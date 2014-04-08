@@ -89,19 +89,17 @@ var defaults = {
 	, style: null
 }
 
-setTimeout(function() {
-	// 所有弹窗都放到此区域
-	// 注意避免可能的重复添加
-	if ( !$('#'+ContainerId).length ) {
-		$('body').append('<div id="'+ContainerId+'"><table><tr><td></td></tr></table></div>')
-	}
-})
+// 所有弹窗都放到此区域
+// 注意避免可能的重复添加
+if ( !$('#'+ContainerId).length ) {
+	$('body').prepend('<div id="'+ContainerId+'"><table><tr><td></td></tr></table></div>')
+}
 
 // 注意：
 // width 样式放到最外层的div上，否则ie7下标题div宽度会适应文字的宽度
 // height 样式放到内容div上，否则内容区域会使用内容的真实高度，按钮div会跟上去
 // 内容区域的边距使用padding
-var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog mod-dialog-dialog" style="width: %width%px; left:-2000px;">'
+var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="width: %width%px; left:-2000px;">'
 	+ '<div class="mod-dialog-title">%title%</div>'
 	+ '<div class="mod-dialog-content" style="height: %height%px; padding:%padding%;">%content%</div>'
 	+ '<div class="mod-dialog-bottom">'
@@ -297,8 +295,11 @@ $.extend(Dialog.prototype, {
 	// 点击确定按钮
 	ok: function() {
 		if ( typeof this.option.ok.callback === 'function' ) {
-			this.option.ok.callback.call(this)
+			if (this.option.ok.callback.call(this) !== false) {
+				this.close()
+			}
 			// 和 this.option.ok.callback() 有什么区别？
+			
 		} else {
 			this.close()
 		}
@@ -308,7 +309,9 @@ $.extend(Dialog.prototype, {
 	// 点击取消按钮
 	cancel: function() {
 		if ( typeof this.option.cancel.callback === 'function' ) {
-			this.option.cancel.callback.call(this)
+			if (this.option.cancel.callback.call(this) !== false) {
+				this.close()
+			}
 		} else {
 			this.close()
 		}

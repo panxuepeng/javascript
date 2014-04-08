@@ -50,7 +50,7 @@ function init(names, x) {
 	
 }
 
-// 绘制
+// 绘制到屏幕上
 function drawNames(names) {
 	for(var i= names.length - 1; i >= 0 ; i--) {
 		var el = document.createElement('div')
@@ -61,49 +61,63 @@ function drawNames(names) {
 
 // 开始
 function start() {
-	var point = $('.point')
+	var point = $('.point:visible')
 	
 	if ( point.length > 1 ) {
-	
-		var index = rand(0, point.length)
-		point.eq(index).remove()
 		
+		// 随机去掉一个
+		var index = rand(0, point.length)
+		point.eq(index).hide()
+		
+		// 开始下一次
 		setTimeout(function() {
 			start()
-		}, 30)
+		}, 50)
 		
 	} else {
-		// 
-		var name = point.text()
-		
-		for (var i=0, len = nameList.length; i < len; i++) {
-			if ( name === nameList[i] ) {
-				// delete nameList[i] // 这种方式，数组的长度不会变化
-				
-				console.log(nameList.splice(i, 1))
-				
-				break
-			}
-		}
-		
-		if ( nameList.length ) {
-			localStorage.names = nameList.join(',')
-			console.log(localStorage.names)
-		} else {
-			delete localStorage.names
-		}
-		// 将其掉落，然后移动到中心位置
-		setTimeout(function() {
-			point.animate({top: maxHeight, 'font-size':20}, 100, function() {
-				point.animate({left: maxWidth/2, top: maxHeight/2 - 50, 'font-size':50}, 500)
-			})
-		}, 500)
-		
+		// 中奖
+		lottery(point)
 	}
+}
+
+// 中奖了
+function lottery(point) {
+	var name = point.text()
+	
+	// 将中奖人从列表当中去掉
+	// 下次就不在抽取此人
+	for (var i=0, len = nameList.length; i < len; i++) {
+		if ( name === nameList[i] ) {
+			// delete nameList[i]
+			// 这种方式，数组的长度不会变化
+			
+			console.log(nameList.splice(i, 1))
+			
+			break
+		}
+	}
+	
+	if ( nameList.length ) {
+		// 将余下的人存储起来，等待下次抽奖
+		localStorage.names = nameList.join(',')
+		//console.log(localStorage.names)
+	} else {
+		// 所有人抽奖完毕
+		delete localStorage.names
+	}
+	
+	// 显示中奖人
+	// 将其掉落，然后移动到中心位置
+	setTimeout(function() {
+		point.animate({top: maxHeight, 'font-size':20}, 100, function() {
+			point.animate({left: maxWidth/2, top: maxHeight/2 - 50, 'font-size':50}, 500)
+		})
+	}, 500)
 }
 
 // 
 init('浩浩,咪咪,琦琦,睿睿,明明,冬冬,鹏鹏,萱萱,扬扬,嘉嘉,帅帅,璐璐,楠楠,蒙蒙,星星,雯雯,恬恬,元元,菲菲,彤彤,飞飞,然然,盈盈,超超,月月,娇娇,姗姗,冉冉,轩轩,童童,雷雷,京京,舟舟,蓉蓉,上上,熙熙,健健,新新,冉冉,牛牛,聪聪,宁宁,远远,开开,倩倩,双双,妮妮,华华,兰兰,越越,南南,铭铭,淼淼,波波,盼盼,蕾蕾,伟伟,宝贝儿,小甜甜,小豆丁,小燕子,小豆豆,小虎子,婉儿,虎虎,静静,丁丁,小精灵,小贝贝,小鱼儿,小猫咪,小石头', 1)
+
 drawNames(nameList)
 
 setTimeout(function() {
