@@ -94,8 +94,8 @@ function Dialog(option) {
 	// 计算显示位置，上下左右居中
 	var winW = win.width()
 		, winH = win.height()
-		, dialogW = o.outerWidth()
-		, dialogH = o.outerHeight()
+		, dialogW = o.outerWidth(true)
+		, dialogH = o.outerHeight(true)
 		, pos={}
 	
 	// 窗口大小改变时，可以自动居中

@@ -182,8 +182,8 @@ Dialog.setCss = function($el, option) {
 Dialog.setPosition = function($el, option) {
 	var winW = win.width()
 		, winH = win.height()
-		, dialogW = $el.outerWidth()
-		, dialogH = $el.outerHeight()
+		, dialogW = $el.outerWidth(true)
+		, dialogH = $el.outerHeight(true)
 		, pos={}
 	
 	// 窗口大小改变时，可以自动居中

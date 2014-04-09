@@ -22,7 +22,7 @@ var defaults = {
 	, cancel: ['取消']
 }
 
-var dialogHtml = '<div class="mod-dialog" style="left:-2000px; width: %width%px;">'
+var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="left:-2000px; width: %width%px;">'
 	+ '<div class="mod-dialog-title">%title%</div>'
 	+ '<div class="mod-dialog-content" style="height: %height%px; overflow:hidden;">%content%</div>'
 	+ '<div class="mod-dialog-buttons">'
@@ -60,8 +60,8 @@ function Dialog(option) {
 	// 计算显示位置，上下左右居中
 	var winW = win.width()
 		, winH = win.height()
-		, dialogW = o.outerWidth()
-		, dialogH = o.outerHeight()
+		, dialogW = o.outerWidth(true)
+		, dialogH = o.outerHeight(true)
 		, pos={}
 	
 	pos.left = (winW - dialogW) / 2

@@ -65,8 +65,8 @@ function Dialog(option) {
 	// 计算显示位置，上下左右居中
 	var winW = win.width()
 		, winH = win.height()
-		, dialogW = o.outerWidth()
-		, dialogH = o.outerHeight()
+		, dialogW = o.outerWidth(true)
+		, dialogH = o.outerHeight(true)
 		, pos={}
 	
 	pos.left = (winW - dialogW) / 2
