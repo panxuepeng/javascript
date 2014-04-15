@@ -4,12 +4,27 @@
  * 1. 构造弹窗html，添加到body尾部
  * 2. 计算显示位置
  */
+ 
 
+/*
+ 即时函数
+ 
+ 几种常见的写法：
+ 1. !function(){  }()
+ 2. (function(){  })()
+ 3. (function(){  }()) 
+ 4. void function(){  }()
+ 
+ 优点：
+ 1. 避免污染全局变量
+ 2. 避免不同的js文件或代码块之间变量冲突
+*/
+ 
+ 
 // 外层使用匿名即时函数包裹
 ~function ($, window, document) {
 
 var win = $(window)
-	, dom = $(document)
 
 // 默认值
 var defaults = {
@@ -58,6 +73,7 @@ function Dialog(option) {
 	var o = $('#mod-dialog-'+dialogCount)
 	
 	// 计算显示位置，上下左右居中
+	// 窗口宽（高）度减去弹窗宽（高）度，再除以2
 	var winW = win.width()
 		, winH = win.height()
 		, dialogW = o.outerWidth(true)

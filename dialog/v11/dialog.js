@@ -40,13 +40,13 @@
 
 "use strict"
 
-var ID = 'mod-dialog'
-
-if ( window[ID] ) {
+var MODID = 'mod-dialog'
+// 避免重复引用时重复执行
+if ( window[MODID] ) {
 	return
 }
 
-window[ID] = true
+window[MODID] = true
 
 var win = $(window)
 	, dom = $(document)
