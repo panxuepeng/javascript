@@ -1,0 +1,17 @@
+.mod-slides {
+	width: 560px;
+	height: 305px;
+	border: 0;
+	overflow: hidden;
+}
+.mod-slides-list {
+	width: 99999px;
+	height: 305px;
+}
+
+.mod-slides-item {
+	width: 560px;
+	height: 305px;
+	border: 0;
+	float:left;
+}

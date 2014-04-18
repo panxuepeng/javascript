@@ -109,17 +109,20 @@ var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="w
 	+ '<a title="关闭" class="mod-dialog-close" name="cancel">×</a>'
 + '</div>'
 
-
+// 对于设置类的参数一定要使用对象形式，不要使用多个参数的形式
+// 如 
+// 推荐：function a(option) {...} 
+//       value 形式的键值对 {k:v, ...}
+//       优点是，灵活
+// 
+// 不推荐：function a(b, c, d, e, ...) {...}
+//         缺点很明显，每次调用时都要写一大溜参数
+// 
 // @option string 内容
 // @option object 配置项
 function Dialog(option) {
 	var self = this
 	
-	if ( typeof option === 'string' ) {
-		option = {content: option}
-	}
-	
-	option = $.extend(true, {}, defaults, option)
 	self.option = option
 	
 	// 构建弹窗
@@ -131,6 +134,7 @@ function Dialog(option) {
 	// 计算显示位置，上下左右居中
 	Dialog.setPosition($el, option)
 	
+	// 将实例对象放到元素data里面，方便其他地方使用
 	$el.data('dialog', self)
 	self.$el = $el
 	
@@ -328,6 +332,7 @@ $.extend(Dialog.prototype, {
 	// 修改弹窗标题
 	title: function (html) {
 		var self = this
+		html = html || ''
 		self.$el.find('.mod-dialog-title').html(html)
 		return self
 	},
@@ -336,6 +341,7 @@ $.extend(Dialog.prototype, {
 	// 内容在被赋值到内容区域之前，需计算一下新内容所需的宽和高
 	content: function (html) {
 		var self = this
+		html = html || ''
 		var wh = getContentSize.call(this, html)
 		self.$el.find('.mod-dialog-content').html(html)
 		this.resize(wh.width, wh.height)
@@ -347,14 +353,24 @@ $.extend(Dialog.prototype, {
 		var self = this
 		var o = self.$el
 		var pos = {}
+		width = parseInt(width, 10)
+		height = parseInt(height, 10)
 		
-		o.width(width)
-		o.find('.mod-dialog-content').height(height)
+		// 在操作之前，对参数做验证
 		
-		pos.marginLeft = -(width / 2)
-		pos.marginTop = -(o.height() / 2)
-
-		o.css(pos)
+		if ( !isNaN(width) ) {
+			o.width(width)
+			pos.marginLeft = -(width / 2)
+		}
+		
+		if ( !isNaN(height) ) {
+			o.find('.mod-dialog-content').height(height)
+			pos.marginTop = -(o.height() / 2)
+		}
+		
+		if (pos.marginLeft || pos.marginTop) {
+			o.css(pos)
+		}
 	}
 })
 
@@ -377,6 +393,15 @@ function getContentSize(html) {
 
 // 外部暴露接口
 window.dialog = function (option) {
+	// 参数默认值
+	option = option || {}
+	
+	if ( typeof option === 'string' ) {
+		option = {content: option}
+	}
+	
+	option = $.extend(true, {}, defaults, option)
+	
 	return new Dialog(option)
 }
 

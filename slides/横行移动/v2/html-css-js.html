@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片效果 html 结构和 CSS</title>
+<link rel="stylesheet" href="../v1/slides.css">
+<style>
+
+</style>
+</head>
+<body>
+
+<!--
+相关概念：
+	HTML几何学、CSS盒模型、JavsScript编程风格
+-->
+<h3>幻灯片1</h3>
+<div id="slides1" name="舞台" class="mod-slides">
+	<div name="胶片" class="mod-slides-list">
+		<div class="mod-slides-item"><img src="../../image/1.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/2.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/3.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/4.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/5.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/6.jpg"></div>
+	</div>
+</div>
+<br>
+<h3>幻灯片2</h3>
+<div id="slides2" name="舞台" class="mod-slides">
+	<div name="胶片" class="mod-slides-list">
+		<div class="mod-slides-item"><img src="../../image/1.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/2.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/3.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/4.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/5.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/6.jpg"></div>
+	</div>
+</div>
+
+<script src="../../../jquery/jquery-1.11.0.min.js"></script>
+<script src="slides.js"></script>
+<script>
+!function($){
+
+
+// 使用默认值
+slides('#slides1')
+
+// 自定义一些参数
+slides({
+	selector: '#slides2'
+	
+	// 一次移动花费的时间，单位毫秒
+	, speed: 100
+	
+	// 每次移动完成之后的停留时间，单位毫秒
+	, timeout: 5000
+})
+
+}(jQuery)
+</script>
+</body>
+</html>
