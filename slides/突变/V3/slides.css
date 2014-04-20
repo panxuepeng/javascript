@@ -1,0 +1,52 @@
+.mod-slides {
+	width: 560px;
+	height: 305px;
+	border: 0;
+	overflow: hidden;
+	
+	position: relative;
+}
+.mod-slides-list {
+	width: 99999px;
+	height: 305px;
+}
+
+.mod-slides-item {
+	width: 560px;
+	height: 305px;
+	border: 0;
+	display: none;
+}
+
+.mod-slides-list .current {
+	display: block;
+}
+
+.mod-slides-item  img{
+	width: 560px;
+	height: 305px;
+}
+
+.mod-slides-index {
+	position: absolute;
+	height: 12px;
+	width: 200px;
+	right: 18px;
+	bottom: 13px;
+}
+
+.mod-slides-index  a {
+	margin-top: 2px;
+	float: left;
+	width: 16px;
+	height: 8px;
+	background-color: #a3a3a3;
+	margin-right:10px;
+	cursor: pointer;
+}
+
+.mod-slides-index a.current {
+	display: block;
+	background-color: blue;
+	cursor: default;
+}

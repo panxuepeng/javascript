@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>幻灯片效果 html 结构和 CSS</title>
+<title>幻灯片效果</title>
 <link rel="stylesheet" href="slides.css">
 <style>
 
@@ -19,28 +19,40 @@
 		<div class="mod-slides-item"><img src="../../image/6.jpg"></div>
 	</div>
 </div>
-
+<script src="../../../jquery/jquery-1.11.0.min.js"></script>
 <script>
-/*
-
 !function($){
+// 简单实现图片轮换效果
 
-// 使用默认值
-slides('#slides1')
 
-// 自定义一些参数
-slides({
-	selector: '#slides2'
+// 图片列表
+var items = $('#slides .mod-slides-item')
+
+// 首先将图片列表全部隐藏，然后让第一个显示
+items.hide().eq(0).show()
+
+// 定时轮换
+setInterval(function(){
+	start()
+}, 1000)
+
+function start() {
+	var current = items.filter(':visible')
+	var next = current.next()
 	
-	// 一次移动花费的时间，单位毫秒
-	, speed: 100
+	// 隐藏当前
+	current.hide()
 	
-	// 每次移动完成之后的停留时间，单位毫秒
-	, timeout: 5000
-})
+	// 如果是最后一个则改为第一个，以便循环轮换
+	if (!next.length) {
+		next = items.eq(0)
+	}
+	
+	// 显示下一个
+	next.show()
+}
 
 }(jQuery)
-*/
 </script>
 </body>
 </html>

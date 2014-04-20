@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片效果</title>
+<link rel="stylesheet" href="slides.css">
+<style>
+
+</style>
+</head>
+<body>
+
+<div id="slides" name="舞台" class="mod-slides">
+	<div name="胶片" class="mod-slides-list">
+		<div class="mod-slides-item current"><img src="../../image/1.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/2.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/3.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/4.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/5.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/6.jpg"></div>
+	</div>
+	<div class="mod-slides-index">
+		<a></a><a></a><a></a><a></a><a></a>
+	</div>
+</div>
+<script src="../../../jquery/jquery-1.11.0.min.js"></script>
+<script>
+!function($) {
+// 增加小按钮，点击可跳转功能
+
+// 定时器
+var timer = 0
+
+// 图片列表
+var items = $('#slides .mod-slides-item')
+
+var indexArea = $('#slides .mod-slides-index')
+var btn = indexArea.children().eq(0)
+
+// 清空按钮区域
+indexArea.empty()
+
+// 根据图片个数，填充相等个数的按钮
+items.each(function() {
+	indexArea.append(btn.clone())
+})
+
+// 让第一个处于显示状态
+indexArea.children().eq(0).addClass('current')
+items.eq(0).addClass('current')
+
+function start() {
+	// 定时轮换
+	timer = setInterval(function() {
+		change()
+	}, 3000)
+}
+
+function stop() {
+	clearInterval(timer)
+}
+
+// 轮换
+function change(index) {
+	var current = items.filter('.current') 
+	index = index || current.next().index()
+	
+	if (index <= 0) {
+		index = 0
+	}
+	
+	var next = items.eq(index)
+	console.log(index)
+	// 隐藏当前
+	current.removeClass('current')
+	
+	// 显示下一个
+	next.addClass('current')
+	
+	$('#slides .mod-slides-index .current').removeClass('current')
+	$('#slides .mod-slides-index a').eq(index).addClass('current')
+}
+
+start()
+
+$('#slides').hover(stop, start)
+
+$('#slides').delegate('.mod-slides-index a', 'click', function() {
+	var o = $(this)
+		index = o.index()
+	
+	// 如果触摸的不是当前按钮则change
+	if ( !o.hasClass('current') ) {
+		change(index)
+	}
+})
+
+}(jQuery)
+</script>
+</body>
+</html>

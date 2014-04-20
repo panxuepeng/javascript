@@ -2,10 +2,10 @@
  * 幻灯片
  * 
  * # 1. 计算胶片总长度
- * # 2. 实现单方向单次移动效果
+ * # 2. 实现单方向单次 点击 移动效果
         a) 点击触发移动
 	    b) 绑定事件
- * 3. 实现单方向连续移动效果
+ * 3. 实现单方向 自动 连续移动效果
  * 4. 实现左右方向移动效果
  */
 
@@ -60,18 +60,23 @@ $.extend(Slides.prototype, {
 			, pos = null
 		
 		if ( listWidth - scrollLeft - boxWidth >= boxWidth ) {
-			// 胶片的长度，减去已经
+			// 胶片的长度，减去已滚动的长度和视窗盒子的宽度
+			// 如果剩下的宽度，还可以再次滚动
 			
 			pos = {scrollLeft: scrollLeft + boxWidth}
 		
+		} else {
+			pos = {scrollLeft: 0}
 		}
 			
 		$el.animate(pos, self.speed)
 	},
 	
+	// 向右移动
 	prev: function() {
 		
 	},
+	
 	
 	stop: function() {
 	

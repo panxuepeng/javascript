@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>幻灯片效果</title>
+<link rel="stylesheet" href="../v1/slides.css">
+<style>
+
+</style>
+</head>
+<body>
+
+<div id="slides" name="舞台" class="mod-slides">
+	<div name="胶片" class="mod-slides-list">
+		<div class="mod-slides-item"><img src="../../image/1.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/2.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/3.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/4.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/5.jpg"></div>
+		<div class="mod-slides-item"><img src="../../image/6.jpg"></div>
+	</div>
+</div>
+<script src="../../../jquery/jquery-1.11.0.min.js"></script>
+<script>
+!function($){
+// 增加鼠标触摸时暂停、离开时恢复轮换功能
+
+// 定时器
+var timer = 0
+
+// 图片列表
+var items = $('#slides .mod-slides-item')
+
+// 首先将图片列表全部隐藏，然后让第一个显示
+items.hide().eq(0).show()
+
+function start() {
+	// 定时轮换
+	timer = setInterval(function() {
+		change()
+	}, 2000)
+}
+
+function stop() {
+	clearInterval(timer)
+}
+
+// 轮换
+function change() {
+	var current = items.filter(':visible')
+	var next = current.next()
+	
+	// 隐藏当前
+	current.hide()
+	
+	// 如果是最后一个则改为第一个，以便循环轮换
+	if (!next.length) {
+		next = items.eq(0)
+	}
+	
+	// 显示下一个
+	next.show()
+}
+
+//$('#slides').mouseenter(stop).mouseleave(start)
+start()
+$('#slides').hover(stop, start)
+
+}(jQuery)
+</script>
+</body>
+</html>
