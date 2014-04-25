@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>3个ajax需同时成功才执行某操作</title>
+</head>
+<body>
+
+<script src="../../jquery/jquery-1.11.0.min.js"></script>
+<script>
+
+
+$.when(
+	$.get('ajax.html'),
+	$.get('ajax.html'),
+	$.get('ajax.html')
+).then(function(s1, s2, s3) {
+	console.log('1.执行成功', s2)
+}).done(function() {
+	console.log('1.结束')
+})
+
+
+$.when(
+	$.get('ajax.html'),
+	$.get('ajax.html'),
+	$.get('jquery.html')
+).then(function(s1, s2, s3) {
+	console.log('2.执行成功', s1, s2, s3)
+}, function(s1, s2, s3) {
+	console.log('2.执行失败', s1, s2, s3)
+}).done(function() {
+	console.log('2.结束')
+})
+
+</script>
+</body>
+</html>

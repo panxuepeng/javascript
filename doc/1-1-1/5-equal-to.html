@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>类型转换</title>
+</head>
+<body>
+<script>
+if (2) {
+	if ( 2 == true ) {
+		console.log('2 == true')
+	} else {
+		console.log('2 != true')
+	}
+}
+
+console.log(1+'1')
+console.log(1*'2')
+console.log('[object Object]' == {name:'潘雪鹏'})
+console.log('a' == {toString: function(){return 'a'}})
+console.log([] == [])
+console.log({} == {})
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>for in</title>
+</head>
+<body>
+<a></a>
+<a></a>
+<a></a>
+
+<script>
+var els = document.getElementsByTagName('a')
+
+for (var i in els) {
+	console.log(i)
+}
+</script>
+
+
+<script>
+var str = 'a1b2c3d'
+var nums = str.match(/\d+/g)
+
+for (var i in nums) {
+	//console.log(i)
+}
+</script>
+</body>
+</html>
