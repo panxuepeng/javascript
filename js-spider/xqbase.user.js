@@ -54,6 +54,7 @@ function main($) {
 		
 		iframe = document.createElement("iframe")
 		
+		// iframe 每一次加载成功后,都会执行getData()
 		iframe.onload = function() {
 			getData(iframe.contentDocument)
 		}
@@ -70,39 +71,50 @@ function main($) {
 }
 
 function start() {
-	pn += 1
-	document.title = '正抓第 '+pn+' 页 # ' + title
-	iframe.src = location.href.replace(/gameid=\d+/, 'gameid='+pn).replace(/&debug/, '')
+	if ( $(document).data('pause') ) {
+		// 暂停
+		setTimeout(function(){start()}, 5000)
+	} else {
+		pn += 1
+		document.title = '正抓第 '+pn+' 页 # ' + title
+		iframe.src = location.href.replace(/gameid=\d+/, 'gameid='+pn).replace(/&debug/, '')
+	}
 }
 
-
-function getData(dom) {
+// 获取某项的值
+function text(i) {
 	var fields = $('span', dom)
-	var players = fields.eq(4).text().trim()
+	
+	return fields.eq(i).text().trim()
+}
+
+// 每次iframe加载成功后获取数据
+function getData(dom) {
+	
+	var players = text(4)
 	
 	if ( players.length > 2 ) {
 	
 		index += 1
-		var row = [players]
-		
-		// Event 1991年全国象棋团体锦标赛
-		row.push(fields.eq(8).text().trim())
-		
-		// Date Site 1991年5月11日 弈于 无锡
-		row.push(fields.eq(10).text().trim())
-		
-		// BlackTeam Black 黑方 河北 胡明
-		row.push(fields.eq(11).text().trim())
-		
-		// RedTeam Red 红方 湖南 任武芝
-		row.push(fields.eq(12).text().trim())
-		
-		// ECCO Opening B34. 中炮右横车对反宫马
-		row.push(fields.eq(14).text().trim())
-		
-		// Variation 1. 兵七进一 炮２平３
-		row.push(fields.eq(15).text().trim())
-		
+		var row = [
+			// Event 1991年全国象棋团体锦标赛
+			text(8),
+			
+			// Date Site 1991年5月11日 弈于 无锡
+			text(10),
+			
+			// BlackTeam Black 黑方 河北 胡明
+			text(11),
+			
+			// RedTeam Red 红方 湖南 任武芝
+			text(12),
+			
+			// ECCO Opening B34. 中炮右横车对反宫马
+			text(14),
+			
+			// Variation 1. 兵七进一 炮２平３
+			text(15)
+		]
 		
 		data.push(index + '. ' + JSON.stringify(row))
 		
@@ -111,8 +123,7 @@ function getData(dom) {
 	
 		
 		// 开始下一次抓取
-		start()
-		
+		setTimeout(function(){start()}, 200)
 	} else {
 		document.title = '完成 # ' + title
 	}

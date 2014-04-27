@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>call</title>
+</head>
+<body>
+
+<input id="button" type="button" value="按钮">
+
+<script>
+
+var A = {
+	name: 'A',
+	getName: function(hi) {
+		return hi + this.name
+	}
+}
+
+var B = {
+	name: 'B',
+	getName: function(hi) {
+		return hi + this.name
+	}
+}
+
+
+console.log(B.getName.call(A, 'hello, '))
+</script>
+</body>
+</html>
