@@ -38,6 +38,9 @@
 	6. 鼠标左键双击页面，等待结果即可
 */
 
+// 标记最多抓取几页数据
+var count = 50
+
 // 标记抓取的第几页数据
 var pn = 0
 
@@ -75,9 +78,15 @@ function start() {
 		// 暂停
 		setTimeout(function(){start()}, 5000)
 	} else {
+	
 		pn += 1
-		document.title = '正抓第 '+pn+' 页 # ' + title
-		iframe.src = location.href.replace(/gameid=\d+/, 'gameid='+pn).replace(/&debug/, '')
+		
+		if ( pn <= count ) {
+			document.title = '正抓第 '+pn+' 页 # ' + title
+			iframe.src = location.href.replace(/gameid=\d+/, 'gameid='+pn).replace(/&debug/, '')
+		} else {
+			document.title = '完成 # ' + title
+		}
 	}
 }
 

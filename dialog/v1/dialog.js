@@ -22,7 +22,7 @@
  
  
 // 外层使用匿名即时函数包裹
-;~function ($, window, document) {
+~function ($, window, document) {
 
 var win = $(window)
 
