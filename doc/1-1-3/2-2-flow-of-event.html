@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>透视Dom事件流</title>
+<title>透视DOM事件流</title>
 <style>
 html,body{height:100%;}
 textarea{width:300px; height:500px; font-size:24px;}
@@ -17,24 +17,32 @@ window.tagName = 'window'
 document.tagName = 'document'
 
 var EventUtil = {
-	bind: function(el,  type,  handler){
-		if(typeof el !== 'object'){return}
-		if( el. addEventListener){
-			el.addEventListener(type,  handler,  false);
-		}else{
-			el.attachEvent("on" + type,  handler);
+	bind: function(el,  type,  handler) {
+		if (typeof el !== 'object') {
+			return
 		}
-		return this;
+		
+		if ( el. addEventListener) {
+			el.addEventListener(type,  handler,  false)
+		} else {
+			el.attachEvent("on" + type,  handler)
+		}
+		
+		return this
 	},
 	
-	remove: function(el,  type,  handler){
-		if(typeof el !== 'object'){return}
-		if( el. removeEventListener){
-			el.removeEventListener(type,  handler,  false);
-		}else{
-			el.detachEvent("on" + type,  handler);
+	remove: function(el,  type,  handler) {
+		if (typeof el !== 'object') {
+			return
 		}
-		return this;
+		
+		if( el. removeEventListener) {
+			el.removeEventListener(type,  handler,  false)
+		} else {
+			el.detachEvent("on" + type,  handler)
+		}
+		
+		return this
 	}
 }
 
@@ -82,11 +90,14 @@ function bindEvents2( el ,tagName) {
 			// 阻止事件冒泡
 			e.stopPropagation()
 			
-			// 阻止默认行为
+			// 阻止标签的默认行为
 			e.preventDefault()
 		} else {
-			event.returnValue = false
+			// IE下阻止事件冒泡
 			event.cancelBubble = true
+			
+			// IE下阻止标签的默认行为
+			event.returnValue = false
 		}
 	})
 	
