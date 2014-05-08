@@ -85,7 +85,7 @@ start()
 
 $('#slides').hover(stop, start)
 
-$('#slides').delegate('.mod-slides-index a', 'click', function() {
+$('#slides').on('click', '.mod-slides-index a', function() {
 	var o = $(this)
 		index = o.index()
 	

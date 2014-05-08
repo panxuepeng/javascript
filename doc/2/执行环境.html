@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>执行环境</title>
+</head>
+<body>
+用Chrome，f12，看控制台。
+<script>
+// 函数的每次调用，都会在一个独一无二的上下文环境中执行
+// 即，函数被执行多少次就会创建多少个执行环境
+// 首先要清楚的就是这一点。
+function main() {
+	var value = 'default'
+	
+	return function(val) {
+		if (val) {
+			value = val
+		}
+		return value
+	}
+}
+
+var val1 = main()
+val1('sijiaomao')
+
+var val2 = main()
+alert(val2())
+</script>
+</body>
+</html>
