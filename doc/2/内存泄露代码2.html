@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>内存泄露代码2</title>
+</head>
+<body>
+用Chrome，f12，看控制台。
+<script>
+(function(win){
+	win.fnList = []
+	function main() {
+		var str = 'sijiaomao.com'
+		for (var i = 0; i < 12; i++) {
+			str += str
+		}
+		
+		return function() {
+			return str
+		}
+	}
+
+	// 看任务管理器，循环之后的内存增加情况
+	for (var i = 0; i < 1000000; i++) {
+		fnList.push(main())
+	}
+})(window)
+</script>
+</body>
+</html>
