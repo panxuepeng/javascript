@@ -39,7 +39,7 @@
 */
 
 // 标记最多抓取几页数据
-var count = 10
+var count = 1000
 
 // 标记抓取的第几页数据
 var pn = 0
@@ -50,7 +50,7 @@ var iframeDom
 var title = document.title
 	
 // 标记抓取的第几条数据
-var index = 0
+var index = 10
 		
 function main($) {
 	var fn = function() {
@@ -107,34 +107,18 @@ function getData() {
 	if ( players.length > 2 ) {
 	
 		index += 1
-		var row = [
-			// Event 1991年全国象棋团体锦标赛
-			text(8),
-			
-			// Date Site 1991年5月11日 弈于 无锡
-			text(10),
-			
-			// BlackTeam Black 黑方 河北 胡明
-			text(11),
-			
-			// RedTeam Red 红方 湖南 任武芝
-			text(12),
-			
-			// ECCO Opening B34. 中炮右横车对反宫马
-			text(14),
-			
-			// Variation 1. 兵七进一 炮２平３
-			text(15)
-		]
 		
-		data.push(index + '. ' + JSON.stringify(row))
+		//data.push([index, $('img[src*=pgn]', iframeDom).parent().attr('href')])
 		
 		// 将数据反转后显示到textarea区域，方便查看实时更新情况
-		$('#capture-result').val(data.reverse().join('\n'))
-	
+		//$('#capture-result').val(JSON.stringify(data.reverse()))
+		var url = encodeURIComponent($('img[src*=pgn]', iframeDom).parent().attr('href'))
+		$.get('http://localhost/xqbase/?id='+index+'&url='+url, function(){
+			setTimeout(function(){start()}, 200)
+		})
 		
 		// 开始下一次抓取
-		setTimeout(function(){start()}, 200)
+		//setTimeout(function(){start()}, 200)
 	} else {
 		document.title = '完成 # ' + title
 	}

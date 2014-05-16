@@ -39,35 +39,15 @@
 */
 
 // 标记最多抓取几页数据
-var count = 10
+var count = 2000
 
 // 标记抓取的第几页数据
 var pn = 0
-
-var data = []
-var iframe
-var iframeDom
 var title = document.title
-	
-// 标记抓取的第几条数据
-var index = 0
 		
 function main($) {
 	var fn = function() {
 		fn = function() {}
-		
-		iframe = document.createElement("iframe")
-		
-		// iframe 每一次加载成功后,都会执行getData()
-		iframe.onload = function() {
-			iframeDom = iframe.contentDocument
-			getData()
-		}
-		
-		$('body')
-		.append('<textarea id="capture-result" style="width:90%; height:200px"></textarea>')
-		.append(iframe)
-
 		start()
 	}
 	
@@ -80,21 +60,29 @@ function start() {
 		// 暂停
 		setTimeout(function(){start()}, 5000)
 	} else {
-	
 		pn += 1
 		
 		if ( pn <= count ) {
-			document.title = '正抓第 '+pn+' 页 # ' + title
-			iframe.src = location.href.replace(/gameid=\d+/, 'gameid='+pn).replace(/&debug/, '')
+			document.title = '正抓第 '+pn+' 页'
+			
+			$.get('http://www.xqbase.com/xqbase/?gameid='+pn, function(html) {
+				//var url = html.match(/\?x=[:\d]+/)
+				html = html.replace(/<script [\s\S]+?<\/script>/ig, '')
+				html = html.replace(/<img[^>]+?>/ig, '')
+				html = html.replace(/<embed[^>]+?>/ig, '')
+				document.body.innerHTML = html
+				getData()
+			})
+			
 		} else {
-			document.title = '完成 # ' + title
+			document.title = '完成'
 		}
 	}
 }
 
 // 获取某项的值
 function text(i) {
-	var fields = $('span', iframeDom)
+	var fields = $('span')
 	
 	return fields.eq(i).text().trim()
 }
@@ -105,36 +93,15 @@ function getData() {
 	var players = text(4)
 	
 	if ( players.length > 2 ) {
-	
-		index += 1
-		var row = [
-			// Event 1991年全国象棋团体锦标赛
-			text(8),
-			
-			// Date Site 1991年5月11日 弈于 无锡
-			text(10),
-			
-			// BlackTeam Black 黑方 河北 胡明
-			text(11),
-			
-			// RedTeam Red 红方 湖南 任武芝
-			text(12),
-			
-			// ECCO Opening B34. 中炮右横车对反宫马
-			text(14),
-			
-			// Variation 1. 兵七进一 炮２平３
-			text(15)
-		]
-		
-		data.push(index + '. ' + JSON.stringify(row))
-		
-		// 将数据反转后显示到textarea区域，方便查看实时更新情况
-		$('#capture-result').val(data.reverse().join('\n'))
-	
-		
-		// 开始下一次抓取
-		setTimeout(function(){start()}, 200)
+		//var url = $('img[src*=pgn]').parent().attr('href')
+		var url = $("font:contains('用象棋巫师打开棋谱')").closest('a').attr('href')
+		//console.log(url)
+		$.get('/xqbase/'+url, function(QiPuText){
+			//console.log(QiPuText)
+			$.post('http://localhost/xqbase/', {id: pn, data: QiPuText}, function(result){
+				setTimeout(function(){start()}, 200)
+			})
+		})
 	} else {
 		document.title = '完成 # ' + title
 	}

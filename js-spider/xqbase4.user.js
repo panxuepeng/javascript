@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           象棋巫师棋谱仓库数据抓取
-// @description    提取 www.xqbase.com 上的一些搜索结果数据。如 http://www.xqbase.com/xqbase/?gameid=1&debug
+// @description    提取 www.xqbase.com 上的一些搜索结果数据。如 http://www.xqbase.com/xqbase/?gameid=1&debug&dir=pgn1&pn=0&count=1000
 // @version        1.0
 // @author         panxuepeng
 // @namespace      http://www.xqbase.com/
@@ -34,45 +34,41 @@
 	2. 打开扩展程序菜单，菜单 -〉工具 -〉 扩展程序
 	3. 将此脚本文件拖入到扩展程序页面
 	4. f12，打开控制台
-	5. 地址栏输入 http://www.xqbase.com/xqbase/?gameid=1&debug 回车
+	5. 地址栏输入 http://www.xqbase.com/xqbase/?gameid=1&debug&dir=pgn1&pn=0&count=1000 回车
 	6. 鼠标左键双击页面，等待结果即可
 */
+var timer = 0
 
 // 标记最多抓取几页数据
-var count = 10
+var to = 1000
 
 // 标记抓取的第几页数据
 var pn = 0
 
-var data = []
-var iframe
-var iframeDom
+// 服务端存储的目录
+var dir = 'pgn'
+
 var title = document.title
-	
-// 标记抓取的第几条数据
-var index = 0
 		
 function main($) {
 	var fn = function() {
 		fn = function() {}
-		
-		iframe = document.createElement("iframe")
-		
-		// iframe 每一次加载成功后,都会执行getData()
-		iframe.onload = function() {
-			iframeDom = iframe.contentDocument
-			getData()
-		}
-		
-		$('body')
-		.append('<textarea id="capture-result" style="width:90%; height:200px"></textarea>')
-		.append(iframe)
-
 		start()
 	}
+	var url = location.href
 	
-	// 默认为双击开始
-	$(document).dblclick(fn)
+	// 改写全局设置
+	pn = parseInt(url.match(/&pn=(\w+)/)[1])
+	to = parseInt(url.match(/&to=(\w+)/)[1]) || 100
+	
+	console.log(['pn', pn])
+	
+	if (typeof pn === 'number') {
+		// 默认为双击开始
+		$(document).dblclick(fn)
+	} else {
+		console.log('参数错误')
+	}
 }
 
 function start() {
@@ -80,64 +76,64 @@ function start() {
 		// 暂停
 		setTimeout(function(){start()}, 5000)
 	} else {
-	
 		pn += 1
+		dir = 'pgn' + Math.floor(pn/1000)
 		
-		if ( pn <= count ) {
-			document.title = '正抓第 '+pn+' 页 # ' + title
-			iframe.src = location.href.replace(/gameid=\d+/, 'gameid='+pn).replace(/&debug/, '')
+		if ( pn <= to ) {
+			document.title = '正抓第 '+pn+' 页'
+			
+			$.get('http://www.xqbase.com/xqbase/?gameid='+pn, function(html) {
+				//var url = html.match(/\?x=[:\d]+/)
+				html = html.replace(/<script [\s\S]+?<\/script>/ig, '')
+				html = html.replace(/<img[^>]+?>/ig, '')
+				html = html.replace(/<embed[^>]+?>/ig, '')
+				document.body.innerHTML = html
+				getData()
+			})
+			
 		} else {
-			document.title = '完成 # ' + title
+			document.title = '完成'
 		}
 	}
 }
 
 // 获取某项的值
 function text(i) {
-	var fields = $('span', iframeDom)
+	var fields = $('span')
 	
 	return fields.eq(i).text().trim()
 }
 
 // 每次iframe加载成功后获取数据
 function getData() {
-	
 	var players = text(4)
+	var data
 	
 	if ( players.length > 2 ) {
-	
-		index += 1
-		var row = [
-			// Event 1991年全国象棋团体锦标赛
-			text(8),
+		var url = $("font:contains('用象棋巫师打开棋谱')").closest('a').attr('href')
+		$.get('/xqbase/'+url, function(QiPuText) {
 			
-			// Date Site 1991年5月11日 弈于 无锡
-			text(10),
+			data = {id: pn, dir: dir, data: processData(QiPuText)}
 			
-			// BlackTeam Black 黑方 河北 胡明
-			text(11),
-			
-			// RedTeam Red 红方 湖南 任武芝
-			text(12),
-			
-			// ECCO Opening B34. 中炮右横车对反宫马
-			text(14),
-			
-			// Variation 1. 兵七进一 炮２平３
-			text(15)
-		]
-		
-		data.push(index + '. ' + JSON.stringify(row))
-		
-		// 将数据反转后显示到textarea区域，方便查看实时更新情况
-		$('#capture-result').val(data.reverse().join('\n'))
-	
-		
-		// 开始下一次抓取
-		setTimeout(function(){start()}, 200)
+			postData(data)
+			timer = setTimeout(function(){
+				postData(data)
+			}, 10000)
+		})
 	} else {
 		document.title = '完成 # ' + title
 	}
+}
+
+function processData(data) {
+	return data.split('欢迎访问象棋百科全书网')[0]
+}
+
+function postData(data) {
+	$.post('http://localhost/xqbase/', data, function(result){
+		setTimeout(function(){start()}, 200)
+		clearTimeout(timer)
+	})
 }
 
 if ( location.href.indexOf('&debug') > 0 ) {
