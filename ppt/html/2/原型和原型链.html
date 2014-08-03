@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>原型和原型链</title>
+</head>
+<body>
+f12，看控制台。
+<script>
+function Animal() {
+	this.name = '动物'
+}
+Animal.prototype.runs = function() {
+    console.log(this.name + '，跑起来了\n')
+	return this
+}
+
+function Bird() {
+	this.name = '鸟'
+}
+Bird.prototype = new Animal()
+Bird.prototype.fly = function() {
+    console.log(this.name + '，飞走了\n')
+	return this
+}
+
+function Crow(name) {
+	this.name = name || '乌鸦'
+}
+Crow.prototype = new Bird()
+Crow.prototype.drink = function() {
+    console.log(this.name + '，喝饱了水\n')
+	return this
+}
+
+var crow = new Crow('一只可爱的小乌鸦')
+crow.drink().runs().fly()
+console.dir(crow)
+</script>
+</body>
+</html>

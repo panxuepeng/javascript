@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>内存泄露代码1</title>
+</head>
+<body>
+用Chrome，f12，看控制台。
+<script>
+(function(){
+	function main() {
+		var str = 'sijiaomao.com'
+		for (var i = 0; i < 12; i++) {
+			str += str
+		}
+	}
+	// 看任务管理器，循环之后内存几乎不会增加
+	for (var i = 0; i < 10000000; i++) {
+		main()
+	}
+})()
+</script>
+</body>
+</html>

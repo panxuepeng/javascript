@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>执行环境</title>
+</head>
+<body>
+用Chrome，f12，看控制台。
+<script>
+function main() {
+	var name = 'default'
+	
+	function setName(value) {
+		name = value
+	}
+	
+	function getName() {
+		return name
+	}
+	
+	return {
+		setName: setName,
+		getName: getName
+	}
+}
+
+var obj1 = main()
+obj1.setName('sijiaomao')
+var obj2 = main()
+alert(obj2.getName())
+</script>
+</body>
+</html>

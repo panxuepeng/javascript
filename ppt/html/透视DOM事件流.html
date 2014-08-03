@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>透视DOM事件流</title>
+<style>
+html,body{height:100%;}
+textarea{width:300px; height:500px; font-size:24px;}
+</style>
+</head>
+<body>
+<input id="myBtn" type="button" value="点击这里"/>
+<br>
+<textarea id="box"></textarea>
+<script>
+window.tagName = 'window'
+document.tagName = 'document'
+
+var EventUtil = {
+	bind: function(el,  type,  handler) {
+		if (typeof el !== 'object') {
+			return
+		}
+		
+		if ( el. addEventListener) {
+			el.addEventListener(type,  handler,  false)
+		} else {
+			el.attachEvent("on" + type,  handler)
+		}
+		
+		return this
+	},
+	
+	remove: function(el,  type,  handler) {
+		if (typeof el !== 'object') {
+			return
+		}
+		
+		if( el. removeEventListener) {
+			el.removeEventListener(type,  handler,  false)
+		} else {
+			el.detachEvent("on" + type,  handler)
+		}
+		
+		return this
+	}
+}
+
+function $(id){
+	return document.getElementById(id);
+}
+
+function show(s){
+	$('box').value = $('box').value + '\n' + s;
+}
+
+function bindEvents1( el ,tagName) {
+	tagName = el.tagName || tagName
+	
+	EventUtil.bind(el, 'mousedown', function() {
+		show(tagName+':mousedown')
+	})
+	
+	EventUtil.bind(el, 'mouseup', function(e) {
+		show(tagName+':mouseup')
+		e = e||event
+		
+		/*
+		if (e.stopPropagation) {
+			// 阻止事件冒泡
+			e.stopPropagation()
+			
+			// 阻止标签的默认行为
+			e.preventDefault()
+		} else {
+			// IE下阻止事件冒泡
+			event.cancelBubble = true
+			
+			// IE下阻止标签的默认行为
+			event.returnValue = false
+		}
+		*/
+	})
+	
+	
+	EventUtil.bind(el, 'click', function() {
+		show(tagName+':click')
+	})
+	
+	
+	EventUtil.bind(el, 'dblclick', function() {
+		show(el.tagName+':dblclick')
+	})
+	
+}
+
+var btn = $("myBtn")
+
+bindEvents1(window, 'window')
+bindEvents1(document, 'document')
+bindEvents1(document.body)
+bindEvents1( btn )
+
+
+/*
+// 事件的执行顺序
+window -----> mousedown  mouseup   click
+                  3 ^       6 ^     9 ^
+document ---> mousedown  mouseup   click
+                  2 ^       5 ^     8 ^
+body -------> mousedown  mouseup   click
+                  1 ^       4 ^     7 ^
+button -----> mousedown  mouseup   click
+*/
+</script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>测试调用栈的大小限制</title>
+</head>
+<body>
+f12，看控制台。请在不同的浏览器下查看 stackCount 的大小。
+<script>
+setTimeout(function(){
+	console.log(stackCount)
+}, 0)
+
+var stackCount = 0
+
+function callSelf() {
+	if ( stackCount === 2000 ) {
+		stackCount = 2000
+	}
+	stackCount += 1
+	callSelf()
+}
+callSelf()
+</script>
+</body>
+</html>

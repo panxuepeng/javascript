@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>作用域链</title>
+</head>
+<body>
+用Chrome，f12，看控制台。
+<script>
+// 涉及几个作用域？在var行设置断点在不同的浏览器查看个函数运行期作用域。
+!function () {
+	var a = 1
+	function test1(arg1, arg2) {
+		var b = a + arg1
+		function test2(arg3, arg4) {
+			var c = a + b + arg2
+			function test3(arg5, arg6) {
+				var d = a + b + c + arg4
+				return d
+			}
+			return test3
+		}
+		return test2(1, 1)
+	}
+	var test = test1(1, 1)
+
+	console.dir(test)
+	
+	test(1, 1)
+}()
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片延迟加载</title>
+</head>
+<body>
+<div id="images"></div>
+
+<script src="../jquery/jquery-1.11.0.min.js"></script>
+<script>
+// 构建图片列表
+var html = []
+for (var i=0; i< 10; i++) {
+	html.push('<p><img data-src="image/'+(i%5)+'.jpg?'+i+'" width="560" height="305"></p>')
+}
+
+$('div').html(html.join(''))
+
+// 延迟加载
+var timer
+$(window).on('scroll.lazyload', function() {
+	clearTimeout(timer)
+	
+	timer = setTimeout(function() {
+		find()
+	}, 200)
+})
+
+// 遍历所有未加载的图片
+function find() {
+	var imgs = $('#images img').not('[src]')
+	
+	log('尚有 '+imgs.length + ' 张图片未加载')
+	
+	if (imgs.length) {
+		imgs.each(function() {
+			$(this).isVisible()
+		})
+	} else {
+		$(window).off('scroll.lazyload')
+		log('图片全部加载完毕，已解除相关滚动事件')
+	}
+}
+
+$(find)
+
+// 判断一个元素是否在可视范围
+// 即图片的顶部或底部在可视范围当中
+$.fn.isVisible = function() {
+	var o = this
+	var minHeight = $(window).scrollTop()
+	var maxHeight = minHeight + $(window).height()
+	
+	var top = o.offset().top
+	var height = o.height()
+	
+	
+	if ( (top >= minHeight && top < maxHeight)
+		|| (top + height >= minHeight && top + height < maxHeight)
+	) {
+		o.attr('src', o.data('src'))
+	}
+}
+
+// 日志助手
+// 仅在url当中包含 debug 标识时打印日志
+function log(info, method) {
+	method = method || 'log'
+	
+	if (/[?&]debug\b/.test(location.href) && typeof console === 'object') {
+	
+		if (typeof console[method] === 'function') {
+			console[method](info)
+		} else {
+			console.error('console.'+method+' not exist.')
+		}
+		
+	}
+}
+</script>
+</body>
+</html>

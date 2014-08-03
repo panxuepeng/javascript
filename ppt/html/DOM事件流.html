@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DOM事件流</title>
+<style>
+html,body{height:100%;}
+textarea{width:300px; height:300px; font-size:24px;}
+</style>
+</head>
+<body>
+<textarea id="log-box"></textarea>
+<br>
+<a id="sijiaomao" href="http://www.sijiaomao.com" target="_blank">点击这里：四脚猫高级PHP培训基地</a>
+
+<script>
+// 捕获和冒泡完整事件流
+FlowofEvent()
+
+// 事件流将在冒泡阶段的body节点被阻止，后续的事件不再执行
+//FlowofEvent(5)
+
+
+// 测试Dom事件流的执行顺序
+// 事件的绑定顺序是错乱的，但是执行顺序是有规律的
+function FlowofEvent(stop) {
+	if (!window.addEventListener) {
+		return
+	}
+	
+	document.body.addEventListener('click', function(e) { // 注意：参数 e
+		log("冒泡阶段-body")
+		if (stop === 5) {e.stopPropagation()}
+	}, false)
+	
+	document.addEventListener('click', function() {log("冒泡阶段-document")}, false)
+	window.addEventListener('click', function() {log("冒泡阶段-window")}, false)
+	
+	var btn = document.getElementById("sijiaomao")
+	
+	// e.preventDefault() 用来阻止a链接的默认打开链接的行为
+	btn.addEventListener('click', function(e) {
+		log('捕获阶段-a')
+		if (stop === 4) {e.stopPropagation()}
+		e.preventDefault()
+	}, true)
+	btn.addEventListener('click', function(e) {log('冒泡阶段-a'); e.preventDefault()}, false)
+
+	window.addEventListener('click', function() {log("捕获阶段-window")}, true)
+	document.addEventListener('click', function() {log("捕获阶段-document")}, true)
+	document.body.addEventListener('click', function(e) {
+		log("捕获阶段-body")
+		if (stop === 3) {e.stopPropagation()}
+	}, true)
+}
+
+// 显示日志信息
+function log(s) {
+	var box = document.getElementById('log-box')
+	box.value = box.value + '\n' + s;
+	console.log(s)
+}
+
+</script>
+</body>
+</html>

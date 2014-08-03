@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>循环-阻塞</title>
+</head>
+<body>
+在执行for循环的过程当中，是否可以在文本框输入文字，或拖动滚动条。<input >
+<br>f12，看控制台。
+
+<script>
+~function() {
+// 百万
+var million = 1000000
+
+// 循环次数
+var loopCount = 200 * million
+test1()
+
+function test1() {
+	document.title = '循环中...'
+	var t1 = Date.now(), x = 0
+	for (var i = 0; i < loopCount; i++) {
+		x += 1
+		var s = ' ' + i
+	}
+	console.log(Date.now() - t1)
+	console.log(format(x))
+	document.title = '循环结束'
+}
+
+function format(n) {
+	return (n/million) + '个百万'
+}
+}()
+</script>
+<div style="height:2000px"></div>
+</body>
+</html>
