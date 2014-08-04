@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS脚本错误的影响范围</title>
+</head>
+<body>
+<p>预计控制台会输出什么？</p>
+<script>
+	setTimeout(function(){console.log('setTimeout1')}, '200')
+	function a( ) {
+		var data
+		console.log('a1')
+		if (data.status) {
+			console.log('a2')
+		}
+		console.log('a3')
+	}
+	a()
+	function b( ) {
+		console.log('b')
+	}
+	b()
+	var c = function( ) {
+		console.log('c')
+	}
+	c()
+</script>
+<script>
+	c()
+	function d( ) {
+		console.log('d')
+	}
+	d()
+	
+	setTimeout(function(){console.log('setTimeout2')}, '100')
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

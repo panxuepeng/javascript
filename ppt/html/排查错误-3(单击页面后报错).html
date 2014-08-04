@@ -1,0 +1,1693 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>error 8</title>
+    <link rel="stylesheet" href="http://www.mi.com/css/base.min.css?20140310" />
+    <link rel="stylesheet" type="text/css" href="http://www.mi.com/css/index.min.css?2014030305" />
+</head>
+<body>
+<div class="site-topbar">
+    <div class="container">
+        <div class="topbar-nav">
+            <ul class="clearfix">
+                <li class="current"><a href="http://www.mi.com/">小米网</a></li>
+                <li><a href="http://www.miui.com/" target="_blank">MIUI</a></li>
+                <li><a href="http://www.miliao.com/" target="_blank">米聊</a></li>
+                <li><a href="http://game.xiaomi.com/" target="_blank">游戏</a></li>
+                <li><a href="http://www.duokan.com/" target="_blank">多看阅读</a></li>
+                <li><a href="http://www.mi.com/c/appdownload/" target="_blank">小米网移动版</a></li>
+            </ul>
+        </div>
+        <div class="topbar-info J_userInfo">
+            <a data-needlogin="true" href="http://order.mi.com/site/login?ac=1">登录</a><span class="sep">|</span><a href="https://account.xiaomi.com/pass/register" target="_blank">注册</a>
+        </div>
+    </div>
+</div>
+<!-- .site-topbar END -->
+
+<div class="site-header container">
+    <div class="site-logo">
+        <a class="logo" href="http://www.mi.com/index.php" title="小米官网"><i class="iconfont">&#xe61d;</i></a>
+    </div>
+    <div class="header-info">
+        <div class="search-section">
+            <form id="J_searchForm" class="search-form clearfix" action="/search" method="get">
+                <input class="search-text" type="search" name="keyword" autocomplete="off" value="" placeholder="搜索您需要的商品" />
+                <input type="submit" class="search-btn iconfont" value="&#xe630;" />
+                <!--[if IE 6]><div class="ie6-fix"></div><![endif]-->
+                <div class="hot-words">
+                    <a href='http://www.mi.com/search_%E5%B0%8F%E7%B1%B3%E7%A7%BB%E5%8A%A8%E7%94%B5%E6%BA%90'>小米移动电源</a><a href='http://www.mi.com/search_%E7%B1%B3%E5%85%94'>米兔</a><a href='http://www.mi.com/search_%E5%B0%8F%E7%B1%B3T%E6%81%A4'>小米T恤</a>
+                </div>
+            </form>
+        </div>
+        <div class="cart-section">
+            <a id="J_miniCart" class="mini-cart" href="http://order.mi.com/cart"><i class="iconfont">&#xe609;</i>购物车<span class="mini-cart-num J_cartNum"></span></a>
+            <div id="J_miniCartList" class="mini-cart-list">
+                <p class="loading">数据加载中，请稍后...</p>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav clearfix">
+        <div id="J_categoryContainer" class="nav-category">
+            <a class="btn-category-list" href="http://www.mi.com/accessories">全部商品分类</a>
+            <div class="nav-category-section" style="display: none;">
+                <ul class="nav-category-list"></ul>
+            </div>
+        </div>
+        <div class="nav-main">
+            <ul class="nav-main-list J_menuNavMain clearfix">
+                <li class="nav-main-item current">
+                    <a  href="http://www.mi.com/index.php"><span class="text">首页</span></a>
+                </li>
+                <li class="nav-main-item">
+                    <a href="http://www.mi.com/event/buyphone"><span class="text">小米手机</span><span class="arrow"></span></a>
+                    <div class="nav-main-children">
+                        <ul class="children-list clearfix">
+                            <li class="first">
+                                <a class="item-detail" href="http://www.mi.com/mi3">
+                                    <span class="title">小米手机3</span>
+                                    <span class="desc">迄今为止最快的小米手机</span>
+                                    <span class="price"><b>1999</b>元起</span>
+                                    <span class="thumb">
+                                        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi3.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi3_2x.jpg 2x" width="160" height="160" alt="小米手机3"/>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item-detail" href="http://www.mi.com/mi2s">
+                                    <span class="title">小米手机2S</span>
+                                    <span class="desc">四核1.7GHz性价比挑战者</span>
+                                    <span class="price"><b>1299</b>元起</span>
+                                    <span class="thumb">
+                                        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi2s.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-mi2s_2x.jpg 2x" width="160" height="160" alt="小米手机2S"/>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-main-item">
+                    <a href="javascript: void(0);"><span class="text">红米</span><span class="arrow"></span></a>
+                    <div class="nav-main-children">
+                        <ul class="children-list clearfix">
+                            <li class="first">
+                                <a class="item-detail" href="http://www.mi.com/hongmi">
+                                    <span class="title">红米手机</span>
+                                    <span class="desc">千元双卡双待神器</span>
+                                    <span class="price"><b>699</b>元起</span>
+                                    <span class="thumb">
+                                        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-hongmi.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-hongmi_2x.jpg 2x" width="160" height="160" alt="红米手机"/>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item-detail" href="http://www.mi.com/note">
+                                    <span class="title">红米Note</span>
+                                    <span class="desc">真八核，千元性能新王者</span>
+                                    <span class="price"><b>799</b>元起</span>
+                                    <span class="thumb">
+                                        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-note.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-phone-note_2x.jpg 2x" width="160" height="160" alt="红米Note"/>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-main-item">
+                    <a href="http://www.mi.com/mitv"><span class="text">小米电视</span></a>
+                </li>
+                <li class="nav-main-item">
+                    <a href="javascript: void(0);"><span class="text">盒子</span><span class="arrow"></span></a>
+                    <div class="nav-main-children">
+                        <ul class="children-list clearfix">
+                            <li class="first">
+                                <a class="item-detail" href="http://www.mi.com/hezi">
+                                    <span class="title">小米盒子</span>
+                                    <span class="desc">随时看海量高清网络电影、电视剧</span>
+                                    <span class="price"><b>299</b>元</span>
+                                    <span class="thumb">
+                                        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-hezi.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-hezi_2x.jpg 2x" alt="小米手机3" width="160" height="160"/>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="item-detail" href="http://www.mi.com/hezis">
+                                    <span class="title">小米盒子 增强版</span>
+                                    <span class="desc">首款4K超高清网络机顶盒<br/>性能提升至3倍</span>
+                                    <span class="price"><b>399</b>元</span>
+                                    <span class="thumb">
+                                        <img src="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-hezis.jpg" srcset="http://img03.mifile.cn/webfile/images/2014/cn/nav/nav-hezis_2x.jpg 2x" alt="小米手机2S" width="160" height="160"/>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-main-item">
+                    <a href="http://heyue.mi.com"><span class="text">合约机</span></a>
+                </li>
+                <li class="nav-main-item">
+                    <a href="http://fuwu.mi.com"><span class="text">服务</span></a>
+                </li>
+                <li class="nav-main-item">
+                    <a href="http://www.xiaomi.cn/index.html" target="_blank"><span class="text">社区</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- .site-header END --><!-- Main Content START -->
+    
+<div class="container">
+    <div class="row">
+        <div class="col col-16 offset4">
+            <div class="home-slider">
+                <div id="J_homeSlider" class="xm-slider">
+                    <div class="slide">
+                        <a href="http://hd.mi.com/webfile/zt/open/14042301/index.html" target="_blank"><img src="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0423luyouqi.jpg" data-src-r="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0423luyouqi-s.jpg" srcset="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0423luyouqigaoqingtu.jpg 2x" /></a>
+                    </div>
+<div class="slide">
+                        <a href="http://s1.mi.com/open/index.html" target="_blank"><img src="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0422wanshang.jpg" data-src-r="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0422wanshang-s.jpg" srcset="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0422wanshanggaoqing.jpg 2x" /></a>
+                    </div>
+<div class="slide">
+                        <a href="http://www.mi.com/hezis" target="_blank"><img src="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0423xiaomihezi.jpg" data-src-r="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0423xiaomihezi-s.jpg" srcset="http://img03.mifile.cn/webfile/images/g/2013/cn/index/0423xiaomihezigaoqing.jpg 2x" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="home-hd-show clearfix">
+                <div class="hd-show-item hd-show-item-first">
+	<a href="http://www.mi.com/miwifimini"><img alt="1" src="http://img03.mifile.cn/webfile/images/g/2013/cn/index/mini332-174.jpg" srcset="http://img03.mifile.cn/webfile/images/g/2013/cn/index/mini664-348Retina.jpg 2x" /></a>
+</div>
+<script>
+
+</script>
+<div class="hd-show-item ">
+	<a href="http://www.mi.com/buyphone/mi3"><img alt="3" src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/index-focus-2014041903.jpg" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/xiao2.jpg 2x" /></a>
+</div>
+<div class="hd-show-item ">
+	<a href="http://www.mi.com/event/choose/phone/mi2s"><img alt="2" src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/index-focus-2014041901.jpg" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/xiao1.jpg 2x" /></a>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-star-goods">
+        <div class="xm-plain-box J_starGoodsCarousel">
+            <div class="box-hd">
+                <h3 class="title">小米明星单品</h3>
+                <div class="more">
+                    <div class="xm-recommend-page clearfix">
+                        <a class="page-btn-prev page-btn-prev-disabled iconfont J_carouselPrev" href="javascript: void(0);">&#xe604;</a><a class="page-btn-next iconfont J_carouselNext" href="javascript: void(0);">&#xe605;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-bd">
+                <div class="xm-star-goods-list-wrap J_carouselWrap">
+                    <div class="xm-star-goods-list clearfix J_carouselList">
+                        <div class="xm-star-goods-item">
+    <a href="http://www.mi.com/mitv">
+        <span class="item-thumb">
+            <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/tv.jpg" alt="小米电视" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/TVR.jpg 2x"  />
+        </span>
+        <span class="item-title">小米电视</span>
+        <span class="item-desc">顶配47英寸3D智能电视</span>
+    </a>
+</div>
+<div class="xm-star-goods-item">
+    <a href="http://hezi.mi.com">
+        <span class="item-thumb">
+            <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/hezi.jpg" alt="小米盒子" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/heziR.jpg 2x"  />
+        </span>
+        <span class="item-title">小米盒子</span>
+        <span class="item-desc">高清网络机顶盒，发烧升级版</span>
+    </a>
+</div>
+<div class="xm-star-goods-item">
+    <a href="http://www.mi.com/minidianyuan">
+        <span class="item-thumb">
+            <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/5200.jpg" alt="小米5200Ah移动电源" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/5200R.jpg 2x"  />
+        </span>
+        <span class="item-title">小米5200Ah移动电源</span>
+        <span class="item-desc">全铝合金金属外壳，LG / 三星进口电芯</span>
+    </a>
+</div>
+<div class="xm-star-goods-item">
+    <a href="http://www.mi.com/huosai">
+        <span class="item-thumb">
+            <img src="http://img03.mifile.cn/webfile/images/g/2013/cn/index/T1ttJTBjWv1RXrhCrK220.jpg" alt="新版小米活塞耳机" srcset="http://img03.mifile.cn/webfile/images/g/2013/cn/index/T1ttJTBjWv1RXrhCrK440.jpg 2x"  />
+        </span>
+        <span class="item-title">新版小米活塞耳机</span>
+        <span class="item-desc">99元听歌神器</span>
+    </a>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .home-star-goods END -->
+
+    <div class="home-new-goods">
+        <div class="xm-plain-box">
+            <div class="box-hd">
+                <h3 class="title">新品上架</h3>
+                <div class="more">
+                    <a class="more-link" href="http://www.mi.com/xinpin">更多<i class="iconfont">&#xe605;</i></a>
+                </div>
+            </div>
+            <div class="box-bd">
+                <div class="row">
+                    <div class="col col-15">
+                        <div class="brick-list">
+                            		<div class="brick-item brick-item-l">
+            <div class="item">
+                <a href="http://www.mi.com/item/1141300090">
+                    <span class="item-thumb">
+                        <img src="http://img03.mifile.cn/webfile/images/g/2013/cn/index/teexinban.jpg" alt="捷波朗酷丽蓝牙耳机" srcset="http://img03.mifile.cn/webfile/images/g/2013/cn/index/teexinban.jpg 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+			<div class="brick-item brick-item-m">
+            <div class="item">
+                <a href="http://www.mi.com/item/1141300021">
+                    <span class="item-info">
+                        <span class="item-title">小米彩色金属移动电源10400mAh</span>
+                        <span class="item-price">79元</span>
+                    </span>
+                    <span class="item-thumb">
+                        <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1IAVTB4VT1RXrhCrK.jpg?width=220&height=220" alt="小米彩色金属移动电源10400mAh" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1IAVTB4VT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+    		<div class="brick-item brick-item-m">
+			<div class="brick-item brick-item-s">
+            <div class="item">
+                <a href="http://www.mi.com/item/1134900360">
+                    <span class="item-info">
+                        <span class="item-title">简约收纳袋</span>
+                        <span class="item-price">4.9元</span>
+                    </span>
+                    <span class="item-thumb">
+                        <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1uthTBjCv1RXrhCrK.jpg?width=135&height=135" alt="简约收纳袋" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1uthTBjCv1RXrhCrK.jpg?width=270&height=270 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+    			<div class="brick-item brick-item-s">
+            <div class="item">
+                <a href="http://www.mi.com/item/1141300084">
+                    <span class="item-info">
+                        <span class="item-title">捷波朗style玛丽莲蓝牙耳机</span>
+                        <span class="item-price">399元</span>
+                    </span>
+                    <span class="item-thumb">
+                        <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1bMZTBmLT1RXrhCrK.jpg?width=135&height=135" alt="捷波朗style玛丽莲蓝牙耳机" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1bMZTBmLT1RXrhCrK.jpg?width=270&height=270 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+    	</div>
+				<div class="brick-item brick-item-m">
+            <div class="item">
+                <a href="http://www.mi.com/item/1141500010">
+                    <span class="item-info">
+                        <span class="item-title">QCY派Q8蓝牙耳机</span>
+                        <span class="item-price">88元</span>
+                    </span>
+                    <span class="item-thumb">
+                        <img src="http://img03.mifile.cn/webfile/images/g/2013/cn/index/T1DoxvB4YT1RXrhCrK222.jpg" alt="QCY派Q8蓝牙耳机" srcset="http://img03.mifile.cn/webfile/images/g/2013/cn/index/T1DoxvB4YT1RXrhCrK123.jpg 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+    			<div class="brick-item brick-item-m">
+            <div class="item">
+                <a href="http://www.mi.com/miniwifi">
+                    <span class="item-info">
+                        <span class="item-title">小米随身WIFI</span>
+                        <span class="item-price">19元</span>
+                    </span>
+                    <span class="item-thumb">
+                        <img src="http://img06.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1b8WTBTdv1RXrhCrK.jpg?width=220&amp;height=220" alt="小米随身WIFI" srcset="http://img06.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1b8WTBTdv1RXrhCrK.jpg?width=440&height=440 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+    			<div class="brick-item brick-item-m">
+            <div class="item">
+                <a href="http://www.mi.com/item/1140100005">
+                    <span class="item-info">
+                        <span class="item-title">先锋SE-MJ512折叠式头戴耳机 </span>
+                        <span class="item-price">168元</span>
+                    </span>
+                    <span class="item-thumb">
+                        <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T14yxTBsKT1RXrhCrK.jpg?width=220&height=220" alt="先锋SE-MJ512折叠式头戴耳机 " srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T14yxTBsKT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+    			<div class="brick-item brick-item-m">
+            <div class="item">
+                <a href="http://www.mi.com/item/1141600022">
+                    <span class="item-info">
+                        <span class="item-title">小米4周年米兔纪念版钥匙扣</span>
+                        <span class="item-price">9.9元</span>
+                    </span>
+                    <span class="item-thumb">
+                        <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1PILvBXWT1RXrhCrK.jpg?width=220&height=220" alt="小米4周年米兔纪念版钥匙扣" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1PILvBXWT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+    			<div class="brick-item brick-item-m">
+            <div class="item">
+                <a href="http://www.mi.com/item/1141600002">
+                    <span class="item-info">
+                        <span class="item-title">广角微距二合一镜头</span>
+                        <span class="item-price">59元</span>
+                    </span>
+                    <span class="item-thumb">
+                        <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1CACTBvJT1RXrhCrK.jpg?width=220&height=220" alt="广角微距二合一镜头" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1CACTBvJT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                    </span>
+                </a>
+            </div>
+        </div>
+                            </div>
+                    </div>
+                    <div class="col col-5">
+                        <div class="recharge-section">
+                            <h3>话费充值<span id="rechargeTips" class="xm-recharge-tips"></span></h3>
+                            <form class="xm-recharge-form" action="#">
+                                <fieldset class="xm-recharge-tel">
+                                    <input id="rechargeTel" type="tel" name="rechargeTel" placeholder="请输入手机号码" autocomplete="false" />
+                                </fieldset>
+                                <fieldset class="xm-recharge-amount">
+                                    <select name="rechargeAmount" id="rechargeAmount">
+                                        <option id="amount100" value="100">100元</option>
+                                        <option id="amount30" value="30">30元</option>
+                                        <option id="amount50" value="50">50元</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset class="xm-recharge-price">
+                                    <span class="fieldset-name">实付价格：</span>
+                                    <span id="rechargePrice" class="fieldset-text"><span>98.4</span>元起</span>
+                                </fieldset>
+                                <fieldset class="xm-recharge-submit">
+                                    <input id="rechargeBtn" class="btn btn-primary btn-recharge-submit  btn-block disabled" type="submit" value="立即充值" />
+                                </fieldset>
+                            </form>
+                        </div>
+
+                        <div class="news-section">
+                            <h3>新闻公告</h3>
+                            <ul>
+                                	<li class="first"><span class="dot">&middot;</span><a href="http://www.mi.com/service/tuangou">企业用户采购通道</a></li>
+	<li class="dot"><span class="dot">&middot;</span><a href="http://www.mi.com/lipin">小米网礼品卡频道</a></li>
+	<li class="dot"><span class="dot">&middot;</span><a href="http://order.mi.com/misc/checkindex">小米手机防伪查询</a></li>
+	<li class="dot"><span class="dot">&middot;</span><a href="http://www.mi.com/static/re">小米手机官翻版</a></li>
+                            </ul>
+                        </div>
+                        <div class="channel-section">
+                            <ul class="channel-list">
+                                <li>
+                                    <a href="http://www.mi.com/accessories/30">
+                                        <span class="item-info">
+                                            <span class="item-title">特惠配件套装</span>
+                                            <span class="item-desc">手机必备配件组合购买<br />实惠更优惠</span>
+                                        </span>
+                                        <span class="item-thumb">
+                                            <img src="http://img03.mifile.cn/webfile/images/2014/cn/index/channel-list-cool.jpg?ver=20140419" alt="" />
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://wan.mi.com/">
+                                        <span class="item-info">
+                                            <span class="item-title">我爱酷玩</span>
+                                            <span class="item-desc">邂逅炫酷的电子产品<br />结交趣味相投的朋友</span>
+                                        </span>
+                                        <span class="item-thumb">
+                                            <img src="http://img03.mifile.cn/webfile/images/2014/cn/index/channel-list-new.jpg?ver=20140419" alt="" />
+                                        </span>
+                                    </a>
+                                </li>
+                                <li id="J_secKillGoods">
+                                                                      
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .home-new-goods END -->
+
+    <div class="home-hot-goods">
+        <div class="xm-plain-box">
+            <div class="box-hd">
+                <h3 class="title">大家都喜欢</h3>
+            </div>
+            <div class="box-bd">
+                <div class="row">
+                    <div class="col col-15">
+                        <div class="brick-list">
+                            		<div class="brick-item brick-item-l">
+                                <div class="item">
+                                    <a href="http://www.mi.com/search_3d%E6%80%81%E5%BA%A6%E4%B8%BB%E9%A2%98%E4%BF%9D%E6%8A%A4%E5%A3%B3">
+                                        <span class="item-thumb">
+                                            <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/index-new-2014041902.jpg" alt="1" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/3Dhougai.jpg 2x"  />
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+	<div class="brick-item brick-item-m">
+                                <div class="item">
+                                    <a href="http://www.mi.com/item/1134900389">
+                                        <span class="item-info">
+                                            <span class="item-title">小米小钢炮蓝牙音箱</span>
+                                            <span class="item-price">169元</span>
+                                        </span>
+                                        <span class="item-thumb">
+                                            <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1MmhTBvxT1RXrhCrK.jpg?width=220&height=220" alt="小米小钢炮蓝牙音箱" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1MmhTBvxT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+	<div class="brick-item brick-item-m">
+                                <div class="item">
+                                    <a href="http://www.mi.com/item/1134900343">
+                                        <span class="item-info">
+                                            <span class="item-title">学院风帆布双肩包</span>
+                                            <span class="item-price">79元</span>
+                                        </span>
+                                        <span class="item-thumb">
+                                            <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1caZTBjxT1RXrhCrK.jpg?width=220&height=220" alt="学院风帆布双肩包" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1caZTBjxT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+	<div class="brick-item brick-item-m">
+                                <div class="item">
+                                    <a href="http://www.mi.com/item/1134900397">
+                                        <span class="item-info">
+                                            <span class="item-title">捷波朗酷丽蓝牙耳机</span>
+                                            <span class="item-price">229元</span>
+                                        </span>
+                                        <span class="item-thumb">
+                                            <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1WaxTBTDT1RXrhCrK.jpg?width=220&height=220" alt="捷波朗酷丽蓝牙耳机" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1WaxTBTDT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+	<div class="brick-item brick-item-m">
+                                <div class="item">
+                                    <a href="http://www.mi.com/item/1134900472">
+                                        <span class="item-info">
+                                            <span class="item-title">小米手机2/2S高光后盖</span>
+                                            <span class="item-price">59元</span>
+                                        </span>
+                                        <span class="item-thumb">
+                                            <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1hthTBjdv1RXrhCrK.jpg?width=220&amp;height=220" alt="小米手机2/2S高光后盖" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1hthTBjdv1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-5">
+                        <div class="board-section">
+                            <h3><span>HOT</span>热销商品排行</h3>
+                            <ul class="board-list">
+                                		<li class="top">
+            <a href="http://www.mi.com/dianyuan10400">
+                <span class="item-info">
+                    <span class="item-title">小米移动电源银色</span>
+                    <span class="item-price">69元</span>
+                </span>
+                <span class="item-thumb">
+                    <img src="http://img06.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1.zJvByWT1RXrhCrK.jpg?width=70&height=70" alt="小米移动电源银色" srcset="http://img06.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1.zJvByWT1RXrhCrK.jpg?width=140&height=140 2x"  />
+                </span>
+                <span class="item-num">1</span>
+            </a>
+        </li>
+		<li class="top">
+            <a href="http://www.mi.com/huosai-jianzhuang">
+                <span class="item-info">
+                    <span class="item-title">小米活塞耳机简装版</span>
+                    <span class="item-price">49元</span>
+                </span>
+                <span class="item-thumb">
+                    <img src="http://img06.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1y0JTBy_T1RXrhCrK.jpg?width=70&height=70" alt="小米活塞耳机简装版" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1schTB_Av1RXrhCrK.jpg?width=140&height=140 2x"  />
+                </span>
+                <span class="item-num">2</span>
+            </a>
+        </li>
+		<li class="top">
+            <a href="http://www.mi.com/item/1140700028">
+                <span class="item-info">
+                    <span class="item-title">小米手机2S电池套装</span>
+                    <span class="item-price">99元</span>
+                </span>
+                <span class="item-thumb">
+                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T10yhTBTZT1RXrhCrK.jpg?width=70&height=70" alt="小米手机2S电池套装" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T10yhTBTZT1RXrhCrK.jpg?width=140&height=140 2x"  />
+                </span>
+                <span class="item-num">3</span>
+            </a>
+        </li>
+		<li >
+            <a href="http://www.mi.com/item/1135200040">
+                <span class="item-info">
+                    <span class="item-title">红米极简原色后盖</span>
+                    <span class="item-price">49元</span>
+                </span>
+                <span class="item-thumb">
+                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1dyxTBg_T1RXrhCrK.jpg?width=70&height=70" alt="红米极简原色后盖" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1dyxTBg_T1RXrhCrK.jpg?width=140&height=140 2x"  />
+                </span>
+                <span class="item-num">4</span>
+            </a>
+        </li>
+		<li >
+            <a href="http://www.mi.com/item/1134900515">
+                <span class="item-info">
+                    <span class="item-title">SanDisk 8GB存储卡</span>
+                    <span class="item-price">24.9元</span>
+                </span>
+                <span class="item-thumb">
+                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1tRJTBjAv1RXrhCrK.jpg?width=70&height=70" alt="SanDisk 8GB存储卡" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1tRJTBjAv1RXrhCrK.jpg?width=140&height=140 2x"  />
+                </span>
+                <span class="item-num">5</span>
+            </a>
+        </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .home-hot-goods END -->
+
+    <div class="home-commented-goods">
+        <div class="xm-plain-box">
+            <div class="box-hd">
+                <h3 class="title">热评产品</h3>
+            </div>
+            <div class="box-bd">
+                <div class="xm-commented-goods-list-wrap">
+                    <div class="xm-commented-goods-list clearfix">
+                        		<div class="xm-commented-goods-item J_commentedGoods" data-cid="2134900282">
+                            <a href="http://www.mi.com/item/1134900274">
+                                <span class="item-info">
+                                    <span class="item-title">米兔青春扑克牌精品版</span>
+                                    <span class="item-meta"></span>
+                                    <span class="item-price">9.9元</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1QaxTBgYT1RXrhCrK.jpg?width=220&height=220" alt="米兔青春扑克牌精品版" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1QaxTBgYT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                </span>
+                            </a>
+                            <span class="item-comment">每张扑克都有一个青春故事</span>
+                        </div>
+		<div class="xm-commented-goods-item J_commentedGoods" data-cid="2135200012">
+                            <a href="http://www.mi.com/item/1135200017">
+                                <span class="item-info">
+                                    <span class="item-title">米兔移动电源</span>
+                                    <span class="item-meta"></span>
+                                    <span class="item-price">129元</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1ayxTBvbT1RXrhCrK.jpg?width=220&height=220" alt="米兔移动电源" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1ayxTBvbT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                </span>
+                            </a>
+                            <span class="item-comment">最来电米兔，多彩指示灯随心情而变</span>
+                        </div>
+		<div class="xm-commented-goods-item J_commentedGoods" data-cid="2134900028">
+                            <a href="http://www.mi.com/item/1134900019">
+                                <span class="item-info">
+                                    <span class="item-title">小米2S高透贴膜</span>
+                                    <span class="item-meta"></span>
+                                    <span class="item-price">19元</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1aRZTB_ET1RXrhCrK.jpg?width=220&height=220" alt="小米2S高透贴膜" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1aRZTB_ET1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                </span>
+                            </a>
+                            <span class="item-comment">超高透光率，视觉高清晰</span>
+                        </div>
+		<div class="xm-commented-goods-item J_commentedGoods" data-cid="2134900396">
+                            <a href="http://www.mi.com/item/1134900359">
+                                <span class="item-info">
+                                    <span class="item-title">小米至简真皮钱包</span>
+                                    <span class="item-meta"></span>
+                                    <span class="item-price">149元</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1GahTBjKv1RXrhCrK.jpg?width=220&height=220" alt="小米至简真皮钱包" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1GahTBjKv1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                </span>
+                            </a>
+                            <span class="item-comment">高品质的细节打造出成熟稳重的气质</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .home-commented-goods END -->
+
+    <div class="home-saleoff-goods">
+        <div class="xm-plain-box">
+            <div class="box-hd">
+                <h3 class="title">特价产品</h3>
+            </div>
+            <div class="box-bd">
+                <div class="home-saleoff-goods-list-wrap">
+                    <div class="home-saleoff-goods-list clearfix">
+                        		<div class="home-saleoff-goods-item">
+                            <a href="http://www.mi.com/item/1134900392">
+                                <span class="item-price"><i>99</i>元 <del>169元</del></span>
+                                <span class="item-thumb">
+                                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1OyxTBjET1RXrhCrK.jpg?width=220&height=220" alt="IVS吸盘蓝牙音箱" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1OyxTBjET1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                </span>
+                            </a>
+                        </div>
+		<div class="home-saleoff-goods-item">
+                            <a href="http://www.mi.com/item/1134900375">
+                                <span class="item-price"><i>59</i>元 <del>69元</del></span>
+                                <span class="item-thumb">
+                                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1WUhTBTbT1RXrhCrK.jpg?width=220&height=220" alt="小米短袖POLO" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1WUhTBTbT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                </span>
+                            </a>
+                        </div>
+		<div class="home-saleoff-goods-item">
+                            <a href="http://www.mi.com/item/1141500020">
+                                <span class="item-price"><i>129</i>元 <del>198元</del></span>
+                                <span class="item-thumb">
+                                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1lRhTB7dT1RXrhCrK.jpg?width=220&height=220" alt="大电池全能套装" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1lRhTB7dT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                </span>
+                            </a>
+                        </div>
+		<div class="home-saleoff-goods-item">
+                            <a href="http://www.mi.com/item/1140400028">
+                                <span class="item-price"><i>399</i>元 <del>559元</del></span>
+                                <span class="item-thumb">
+                                    <img src="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1hNxTBCKT1RXrhCrK.jpg?width=220&height=220" alt="黑暗之锤蓝牙游戏手柄" srcset="http://img08.mifile.cn/v1/MI_18455B3E4DA706226CF7535A58E875F0267/T1hNxTBCKT1RXrhCrK.jpg?width=440&height=440 2x"  />
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .home-saleoff-goods END -->
+
+    <div class="home-commented-goods home-duokan-goods">
+        <div class="xm-plain-box">
+            <div class="box-hd">
+                <h3 class="title">多看图书</h3>
+                <div class="more">
+                    <a class="more-link" href="http://www.duokan.com/list/1-1?from=xiaomi" target="_blank">更多<i class="iconfont">&#xe605;</i></a>
+                </div>
+            </div>
+            <div class="box-bd">
+                <div class="xm-commented-goods-list-wrap">
+                    <div class="xm-commented-goods-list clearfix">
+                        		<div class="xm-commented-goods-item">
+                            <a href="http://www.duokan.com/book/43784" target="_blank">
+                                <span class="item-info">
+                                    <span class="item-title">《马尔克斯的一生》</span>
+                                     <span class="item-author">【英】杰拉德·马汀</span>                                    
+                                    <span class="item-price">3.99元</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/duokan_1.jpg" alt="《马尔克斯的一生》" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/duokan_1.jpg 2x"  />
+                                </span>
+                            </a>
+                            <span class="item-comment">缅怀诺奖得主、《百年孤独》作者马尔克斯！5折特惠！</span>
+                        </div>
+		<div class="xm-commented-goods-item">
+                            <a href="http://www.duokan.com/book/47079" target="_blank">
+                                <span class="item-info">
+                                    <span class="item-title">《衣锦夜行》</span>
+                                     <span class="item-author">程毅南</span>                                    
+                                    <span class="item-price">9.99元</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/duokan_2.jpg" alt="《衣锦夜行》" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/duokan_2.jpg 2x"  />
+                                </span>
+                            </a>
+                            <span class="item-comment">经济学和心理学双修的程毅南，在知乎谈论大家平日司空见惯、却鲜有人深入思考的现象。</span>
+                        </div>
+		<div class="xm-commented-goods-item">
+                            <a href="http://www.duokan.com/book/46905" target="_blank">
+                                <span class="item-info">
+                                    <span class="item-title">《福尔摩斯探案全集》</span>
+                                     <span class="item-author">【英】阿瑟·柯南·道尔</span>                                    
+                                    <span class="item-price">9.99元</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/duokan_3.jpg" alt="《福尔摩斯探案全集》" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/duokan_3.jpg 2x"  />
+                                </span>
+                            </a>
+                            <span class="item-comment">60件惊险奇案，80余次生死关头，1次神奇的死而复活，成就史上最冷静、最魅力的天才侦探。 </span>
+                        </div>
+		<div class="xm-commented-goods-item">
+                            <a href="http://www.duokan.com/book/46992" target="_blank">
+                                <span class="item-info">
+                                    <span class="item-title">《王小波传》</span>
+                                     <span class="item-author">乐文城</span>                                    
+                                    <span class="item-price">6元</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/duokan_4.jpg" alt="《王小波传》" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/duokan_4.jpg 2x"  />
+                                </span>
+                            </a>
+                            <span class="item-comment">你可以什么都没有，但不能没有智慧。你可以什么都放下，但不能放下尊严。 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .home-duokan-goods END -->
+
+    <div class="home-commented-goods home-miui-goods">
+        <div class="xm-plain-box">
+            <div class="box-hd">
+                <h3 class="title">MIUI 主题</h3>
+                <div class="more">
+                    <a class="more-link" href="http://zhuti.xiaomi.com/?from=mi" target="_blank">更多<i class="iconfont">&#xe605;</i></a>
+                </div>
+            </div>
+            <div class="box-bd">
+                <div class="xm-commented-goods-list-wrap">
+                    <div class="xm-commented-goods-list clearfix">
+                       		<div class="xm-commented-goods-item">
+                            <a href="http://zhuti.xiaomi.com/detail/7b39ea1e-b192-414f-9b21-2c826232fbd0" target="_blank">
+                                <span class="item-info">
+                                    <span class="item-title">不念</span>                                   
+                                    <span class="item-price">6米币</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/MIUI_1.jpg?width=250&height=220" alt="不念" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/MIUI_1.jpg 2x"  />
+                                </span>
+                            </a>
+                        </div>
+		<div class="xm-commented-goods-item">
+                            <a href="http://zhuti.xiaomi.com/detail/78de48f8-21f4-4414-9ee6-cb012185123a" target="_blank">
+                                <span class="item-info">
+                                    <span class="item-title">黑米（仁波切版）</span>                                   
+                                    <span class="item-price">9米币</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/MIUI_2.jpg?width=250&height=220" alt="黑米（仁波切版）" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/MIUI_2.jpg 2x"  />
+                                </span>
+                            </a>
+                        </div>
+		<div class="xm-commented-goods-item">
+                            <a href="http://zhuti.xiaomi.com/detail/300ae265-67d4-49ad-b67a-4cee82aaf4ba" target="_blank">
+                                <span class="item-info">
+                                    <span class="item-title">麦拉风-稳稳的幸福</span>                                   
+                                    <span class="item-price">6米币</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/MIUI_3.jpg?width=250&height=220" alt="麦拉风-稳稳的幸福" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/MIUI_3.jpg 2x"  />
+                                </span>
+                            </a>
+                        </div>
+		<div class="xm-commented-goods-item">
+                            <a href="http://zhuti.xiaomi.com/detail/b2f8fdf4-c0d3-4b00-8f6b-f304510ab286" target="_blank">
+                                <span class="item-info">
+                                    <span class="item-title">未来科技</span>                                   
+                                    <span class="item-price">6米币</span>
+                                </span>
+                                <span class="item-thumb">
+                                    <img src="http://img03.mifile.cn/webfile/images/g/2014/cn/index/MIUI_4.jpg?width=250&height=220" alt="未来科技" srcset="http://img03.mifile.cn/webfile/images/g/2014/cn/index/MIUI_4.jpg 2x"  />
+                                </span>
+                            </a>
+                        </div>
+ 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .home-miui-goods END -->
+</div>
+
+<!-- Main Content END -->    
+<div class="site-footer">
+        <div class="container">
+            <div class="footer-service">
+                <ul class="list-service clearfix">
+                    <li>
+                        <a href="http://www.mi.com/service/exchange/#fastRepair" target="_blank">
+                            <i class="iconfont">&#xe63a;</i>
+                            <strong>1小时快修服务</strong>
+                            <span>小米之家承诺1小时内完成维修</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.mi.com/service/exchange" target="_blank">
+                            <i class="iconfont">&#xe638;</i>
+                            <strong>7天无理由退货</strong>
+                            <span>收到商品7天内无理由退货服务</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.mi.com/service/exchange" target="_blank">
+                            <i class="iconfont">&#xe637;</i>
+                            <strong>15天免费换货</strong>
+                            <span>故障、质量问题免费换新货承诺</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.mi.com/service/transfer" target="_blank">
+                            <i class="iconfont">&#xe64d;</i>
+                            <strong>满100元包邮</strong>
+                            <span>在线支付满百元免邮费（除电视）</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.mi.com/c/service/poststation" target="_blank">
+                            <i class="iconfont">&#xe63b;</i>
+                            <strong>451家售后网点</strong>
+                            <span>遍布全国31个省市的售后服务点</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-links clearfix">
+                <dl class="col-links col-links-first">
+                    <dt>帮助中心</dt>
+                    <dd><a href="http://faq.xiaomi.cn/c-1/6.html" target="_blank">购物指南</a></dd>
+                    <dd><a href="http://faq.xiaomi.cn/c-84/6.html" target="_blank">支付方式</a></dd>
+                    <dd><a href="http://faq.xiaomi.cn/c-9/6.html" target="_blank">配送方式</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>服务支持</dt>
+                    <dd><a href="http://faq.xiaomi.cn/c-32/6.html " target="_blank">售后政策</a></dd>
+                    <dd><a href="http://fuwu.mi.com/" target="_blank">自助服务</a></dd>
+                    <dd><a href="http://xiazai.mi.com/" target="_blank">相关下载</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>小米之家</dt>
+                    <dd><a href="http://www.mi.com/c/xiaomizhijia/" target="_blank">小米之家</a></dd>
+                    <dd><a href="http://www.mi.com/c/service/poststation" target="_blank">服务网点</a></dd>
+                    <dd><a href="http://service.order.xiaomi.com/mihome/index" target="_blank">预约亲临到店服务</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>关于小米</dt>
+                    <dd><a href="http://www.mi.com/about" target="_blank">了解小米</a></dd>
+                    <dd><a href="http://hr.xiaomi.com/" target="_blank">加入小米</a></dd>
+                    <dd><a href="http://www.mi.com/about/contact" target="_blank">联系我们</a></dd>
+                </dl>
+                <dl class="col-links">
+                    <dt>关注我们</dt>
+                    <dd><a href="http://e.weibo.com/xiaomishouji" target="_blank">新浪微博</a></dd>
+                    <dd><a href="http://user.qzone.qq.com/2451201053/" target="_blank">QQ空间</a></dd>
+                    <dd><a class="J_modalWeixin" href="javascript: void(0);">官方微信</a></dd>
+                </dl>
+                <div class="col-contact">
+                    <p class="phone">400-100-5678</p>
+                    <p>周一至周日 8:00-18:00<br />（仅收市话费）</p>
+                    <a class="btn btn-primary btn-small" href="http://www.mi.com/service/contact" target="_blank">24小时在线客服</a>
+                </div>
+            </div>
+            <div class="footer-info clearfix">
+                <div class="info-text">
+                    <p>小米旗下网站：<a href="http://www.mi.com/index.php" target="_blank" title="小米网">小米网</a><span class="sep">|</span><a href="http://www.miui.com" target="_blank" title="MIUI">MIUI</a><span class="sep">|</span><a href="http://www.miliao.com" target="_blank" title="米聊">米聊</a><span class="sep">|</span><a href="http://book.duokan.com" target="_blank" title="多看书城">多看书城</a><span class="sep">|</span><a href="http://www.miwifi.com" target="_blank" title="小米路由器">小米路由器</a><span class="sep">|</span><a href="http://www.mi.com/hk" target="_blank" title="繁體香港">繁體香港</a><span class="sep">|</span><a href="http://www.mi.com/tw" target="_blank" title="繁體台灣">繁體台灣</a><span class="sep">|</span><a href="http://www.mi.com/en" target="_blank" title="English">English</a><span class="sep">|</span><a href="http://blog.xiaomi.com" target="_blank" title="小米后院">小米后院</a><span class="sep">|</span><a href="http://xiaomi.tmall.com/index.htm" target="_blank" title="小米天猫店">小米天猫店</a></p>
+                    <p>&copy;<a href="http://www.mi.com/" target="_blank" title="mi.com">mi.com</a> 京ICP证110507号 京ICP备10046444号 京公网安备1101080212535号 <a href="http://img03.mifile.cn/webfile/images/2013/cn/jingwangwen.jpg" target="_blank">京网文[2014]0059-0009号</a></p></p>
+                </div>
+                <div class="info-sites J_globalList">
+                    <div class="global-site-current">简体中文</div>
+                    <span class="arrow"></span>
+                    <ul class="global-site-list">
+                        <li><a href="http://www.mi.com/en">English</a></li>
+                        <li><a href="http://www.mi.com/">简体中文</a></li>
+                        <li><a href="http://www.mi.com/tw">繁體台灣</a></li>
+                        <li><a href="http://www.mi.com/hk">繁體香港</a></li>
+                        <li><a href="http://www.mi.com/sg">Singapore</a></li>
+                    </ul>
+                </div>
+                <div class="info-links">
+                    <a href="https://ss.cnnic.cn/verifyseal.dll?sn=e12033011010015771301369&ct=df&pa=461082" target="_blank"><img src="http://p.www.xiaomi.com/zt/12052601/cnnicVerifyseal.png" alt="可信网站" /></a> <a href="https://search.szfw.org/cert/l/CX20120926001783002010" target="_blank"><img alt="诚信网站" src="http://p.www.xiaomi.com/zt/12052601/szfwVerifyseal.gif" /></a> <a href="http://www.315online.com.cn/member/315140007.html" target="_blank"><img alt="诚信网站" src="http://p.www.xiaomi.com/zt/12052601/save.jpg" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .site-footer END -->
+
+<div id="loginBox" class="modal modal-login hide" data-width="420" data-width-sns="420"  data-height="430">
+        <a class="close" data-dismiss="modal" href="javascript: void(0);"><i class="iconfont">&#xe617;</i></a>
+        <div class="modal-body" id="loginBox-con">
+            <p class="loginBox-loading">数据加载中，请稍后...</p>
+        </div>
+    </div>
+    <!-- .modal-login END -->
+
+    <div id="J_modalWeixin" class="modal hide modal-weixin" data-width="480" data-height="520">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal"><i class="iconfont">&#xe617;</i></a>
+            <h3>小米手机官方微信二维码</h3>
+        </div>
+        <div class="modal-body" style="padding-top: 10px;">
+            <p style="margin: 0 0 10px;">打开微信，点击右上角的“魔法棒”，选择“扫一扫”功能，<br/>对准下方二维码即可。</p>
+            <img alt="" src="http://s1.mi.com/zt/130116/mabg0.jpg" />
+        </div>
+    </div>
+<script src="../../jquery/jquery-1.11.0.min.js"></script>
+
+<div>
+<script>
+
+~function($, win, dom) {
+	var currentClass = 'current'
+	var dataUrl = 'http://guancha.baike.com/categoryTreeDataAction.do?callback=?'
+	
+	
+	
+	function logger(data, method) {
+		method = method || 'log'
+		if ( location.href.indexOf('&debug') > 0 && typeof console === 'object' ) {
+			if ( data instanceof Array && console[method].apply ) {
+				console[method].apply(console, data)
+			} else {
+				console[method](data)
+			}
+			
+		}
+	}
+	
+// 各种事件绑定
+	
+	// 一级分类左右移动按钮点击事件
+	$(dom).delegate('.lve1_t >span', 'click', lve1_t_click)
+	
+	// 二级三级分类的下拉按钮点击事件
+	$(dom).delegate('.lve2_t .xl, .lve3_t .xl', 'click', lve2_3_xl_click)
+	
+	// 底部标签下拉按钮的点击事件
+	$(dom).delegate('.lve_tag .xl', 'click', function() {
+		var o = $(this).parent()
+		o.toggleClass('autoh')
+	})
+	
+	// 点击二级分类
+	$(dom).delegate('.lve2_t li, .lve3_t li', 'click', lve23_t_click)
+	
+	// 分类页码的点击事件
+	$(dom).delegate('.t_w .page', 'click', category_page_click)
+	
+	// 词条数据页码的点击事件
+	$(dom).delegate('#flipover a', 'click', flipover_page_click)
+	
+	
+	win.NavigatorModleCategoryTree = {
+		// 初始化
+		init: function() {
+			// 注意，可能存在多个分类树模块
+			$('.classification').each(function() {
+				var box = $(this)
+				
+				// 给词条初始化关联分类增加focus属性
+				box.find('.lve2_t li.bold, .lve3_t li.bold').attr('data-focus', $.trim($('h1:first').text()))
+				
+				// 初始化一级分类左右移动按钮样式
+				// 注意，需要默认显示最后一级的分类
+				box.find('.lve1_t span:first').removeClass().addClass('ago ago2')
+				box.find('.lve1_t .t_w').css({overflow: 'hidden'})
+				
+				var width = 0
+				
+				box.find('.lve1_t li').each(function() {
+					width += $(this).outerWidth() + 10
+				})
+				box.find('.lve1_t ul').width(width).height(28)
+				
+				if ( width < 562 ) {
+					box.find('.lve1_t span:last').removeClass().addClass('after after2')
+				} else {
+					box.find('.lve1_t span:last').removeClass().addClass('after')
+					setTimeout(function(){
+						box.find('.lve1_t span:last').click()
+					}, 0)
+				}
+				
+				// 右下角下拉按钮
+				width = 0
+				box.find('.lve_tag li').each(function() {
+					width += $(this).outerWidth()
+				})
+				
+				if ( width < 588 ) {
+					box.find('.lve_tag .t_w > span').removeClass().addClass('xl2')
+				} else {
+					box.find('.lve_tag .t_w > span').removeClass().addClass('xl')
+				}
+			})
+			
+			// 初始化下拉按钮的状态
+			setXLBtnState()
+			
+			document.onclick = function() {
+				alert(event.clientX)
+				setTimeout(function(){
+					var clientY = event.clientY
+				}, 0)
+			}
+		}
+	}
+	
+	// 初始化下拉按钮的状态
+	function setXLBtnState() {
+		$('.classification').each(function() {
+			var o = $(this)
+			
+			// 注意
+			// 存在分页或分类个数大于7，即可下拉
+			
+			if ( $.trim(o.find('.lve2_t .page i').text()) || o.find('.lve2_t li').length > 7 ) {
+				o.find('.lve2_t .t_w > span').removeClass().addClass('xl')
+			} else {
+				o.find('.lve2_t .t_w > span').removeClass().addClass('xl2')
+			}
+
+			if ( $.trim(o.find('.lve3_t  .page i').text()) || o.find('.lve3_t li').length > 7) {
+				o.find('.lve3_t .t_w > span').removeClass().addClass('xl')
+			} else {
+				o.find('.lve3_t .t_w > span').removeClass().addClass('xl2')
+			}
+		})
+	}
+	
+	// 一级分类左右移动按钮点击事件
+	function lve1_t_click() {
+		var o = $(this)
+			, box = o.parent().children('div')
+			, ul = box.children()
+			, scrollLeft = box.scrollLeft()
+			, moveTime = 300
+			, boxWidth = 600
+			, pos = null
+			
+		if (o.is('.ago2') || o.is('.after2')) {
+			return false
+		}
+		
+		if (o.is('.ago')) {
+			// 向右移动
+			if ( scrollLeft > boxWidth ) {
+				pos = {scrollLeft: scrollLeft - boxWidth}
+			} else if ( scrollLeft > 0 ){
+				pos = {scrollLeft: 0}
+			}
+		} else {
+			// 向左移动
+			if ( ul.width() - scrollLeft - boxWidth > boxWidth  ) {
+				pos = {scrollLeft: scrollLeft + boxWidth}
+				
+			} else if ( ul.width() - scrollLeft - boxWidth > 0 ){
+				pos = {scrollLeft: ul.width() - boxWidth}
+			}
+		}
+
+		box.animate(pos, moveTime, function(){
+			setBtnState(o)
+		})
+	}	
+
+	// 修改一级分类左右按钮状态
+	function setBtnState(btn) {
+		var box = btn.parent().children('div')
+			, ul = box.children()
+			, scrollLeft = box.scrollLeft()
+			, boxWidth = 600
+			, ago = btn.parent().find('.ago')
+			, after = btn.parent().find('.after')
+
+		if ( scrollLeft === 0 ) {
+		// 左侧到头
+			ago.addClass('ago2')
+			after.removeClass('after2')
+		} else if (Math.abs(ul.width() - scrollLeft - boxWidth) < 20) {
+		// 右侧到头
+			ago.removeClass('ago2')
+			after.addClass('after2')
+		} else {
+		// 中间位置
+			ago.removeClass('ago2')
+			after.removeClass('after2')
+		}
+	}
+	
+	// 二级三级分类的下拉按钮点击事件
+	function lve2_3_xl_click() {
+		var o = $(this).parent()
+		var ul = o.find('ul:first')
+		//console.log(ul)
+		if ( o.is('.autoh') ) {
+			// 收起
+			o.removeClass('autoh')
+			
+			var i = ul.find('.bold').index()
+			if ( i > 13) {
+				ul.addClass('current3')
+			}else if ( i > 6) {
+				ul.addClass('current2')
+			}
+		} else {
+			// 展开
+			
+			ul.removeClass()
+			
+			// 同时只能展开一个
+			$('.lve2_t .autoh, .lve3_t .autoh').removeClass('autoh')
+			o.addClass('autoh')
+		}
+	}
+	
+	// 二三级分类点击事件
+	// 注意：
+	// 点击二级分类时，如果三级分类处于展开状态，则需要收起
+	function lve23_t_click() {
+		var o = $(this)
+			, ul = o.closest('ul')
+			, post = {}
+			, categoryId = 0
+			, box = o.closest('.classification')
+			
+		if (o.data('focus')) {
+			post.focus = o.data('focus')
+		}
+		post.order = ul.data('order')
+		post.action = 'ajaxCategoryTree'
+		post.dataType = 'category'
+		post.categoryId = o.find('a').attr('value')
+		
+		// 判断点击的是二级/三级分类
+		// 点击二级分类时，如果三级分类处于展开状态，则需要收起
+		// 点击分类后，将当前分类置为收起状态
+		if ( o.closest('.lve2_t').length ) {
+			// box.find('.lve2_t .t_w').removeClass('autoh')
+			// 注意不能强制去掉class属性，那样会不能将焦点分类放到第一行
+			box.find('.lve3_t .t_w').removeClass('autoh')
+			logger('点击二级分类')
+		} else {
+			logger('点击三级分类')
+		}
+		
+		// 设置当前点击元素为焦点分类
+		// 修改 focus 为当前点击的分类
+		//ul.data('focus', post.categoryId)
+		ul.attr('data-focus', post.categoryId)
+		ul.find('li.bold').removeClass('bold')
+		o.addClass('bold')
+		
+		// 如果菜单是展开状态则收起
+		if ( ul.closest('.t_w').hasClass('autoh') ) {
+			ul.closest('.t_w').find('.xl').click()
+		}
+		
+		// 提示
+		// callback 是在数据渲染完成后执行的
+		getData(dataUrl, post, function(data) {
+			render(o, data, function() {
+				// 修改 focus 为当前第一个分类
+				// 仅在联动时修改，分页时不需要修改
+				var focus = ''
+				
+				if ( o.closest('.lve2_t').length ) {
+					// 点击二级分类，需同时修改三级的 focus
+					var ul = box.find('.lve3_t ul:first')
+					focus = ul.find('li:first a').attr('value')
+					ul.attr('data-focus', focus)
+					ul.find('li:first').not('li.gray9').addClass('bold')
+					logger('点击二级分类，需同时修改三级的 focus('+focus+') 和 给三级第一个高亮')
+				}
+				
+				// 修改四级的 focus
+				ul = box.find('.lve_c').children('ul:visible')
+				if ( ul.length ) {
+					if ( ul.is('.ul_pic') ) {
+						// 词条
+						focus = ul.find('li:first img').attr('title')
+						logger(['修改四级词条的 focus', focus])
+					} else {
+						// 分类
+						focus = ul.find('li:first a').attr('value')
+						logger(['修改四级分类的 focus', focus])
+					}
+					
+					ul.find('li:first').addClass('current')
+					ul.attr('data-focus', focus)
+				} else {
+					logger(['四级区域没有数据'])
+				}
+			})
+		})
+		
+		return false
+	}
+
+	
+	// 数据渲染
+	// 1. 分别构造三级分类、词条列表、各个分页的 html
+	// 2. 根据业务逻辑，修改相关值
+	function render($li, data, callback) {
+		logger(['render data', data])
+		var box = $li.closest('.classification')
+		if ( data.status == 1 ) {
+			// 有数据的区域
+			//   doc  词条区域
+			//   cat3 二级分类
+			//   cat2 三级分类
+			//   cat1 四级分类
+			var hasDataContainer = { doc: 0, cat3: 0, cat2: 0, cat1: 0 }
+			
+			// 不能清空当前及上面的区域
+			if ( $li.closest('.lve2_t').length ) {
+				hasDataContainer.cat3 = 1
+			} else if ( $li.closest('.lve3_t').length ) {
+				hasDataContainer.cat3 = 1
+				hasDataContainer.cat2 = 1
+			}
+			
+			// 数据渲染，并将有数据的区域置为 1
+			$.each(data.value, function(i, obj) {
+				if (obj.dataType == 'doc') {
+					if (obj.list.length) {
+						render.docList(obj, box)
+						hasDataContainer.doc = 1
+					}
+					
+				} else if (obj.order == '3') {
+					if (obj.list.length) {
+						render.categoryList3(obj, box)
+						hasDataContainer.cat3 = 1
+					}
+					
+				} else if (obj.order == '2') {
+					if (obj.list.length) {
+						render.categoryList2(obj, box)
+						hasDataContainer.cat2 = 1
+					}
+				} else if (obj.order == '1') {
+					if (obj.list.length) {
+						render.categoryList1(obj, box)
+						hasDataContainer.cat1 = 1
+					}
+				}
+			})
+			
+			logger(['有数据的区域（值为1的）', hasDataContainer])
+			if (hasDataContainer.cat3 === 0) {
+				// 二级分类区域没有数据
+				box.find('.lve2_t ul:first').html('<li class="gray9">暂无数据</li>')
+			}
+			
+			if (hasDataContainer.cat2 === 0) {
+				// 三级分类区域没有数据
+				box.find('.lve3_t ul:first').html('<li class="gray9">暂无数据</li>')
+				
+				// 清空分页内容
+				box.find('.lve3_t .page').empty()
+				
+			}
+			
+			if (hasDataContainer.cat1 === 0 && hasDataContainer.doc === 0) {
+				// 显示引导信息
+				box.find('.lve_c ul.pic_ul, .lve_c ul.ul_pic, #flipover').hide()
+				box.find('.build-info').show()
+				
+				// 修改提示信息当中的 “申请分类管理员” 链接地址
+				var url = 'http://fenlei.baike.com/themeManagerApply.do?Action=forapply&category_name='
+				
+				var category_name = ''
+				if ( box.find('.lve3_t li.bold').length ) {
+					category_name = box.find('.lve3_t li.bold a').attr('title')
+				} else {
+					category_name = box.find('.lve2_t li.bold a').attr('title')
+				}
+				
+				url += encodeURI(category_name)
+				
+				box.find('.build-info a[href*=themeManagerApply]').attr('href', url)
+			} else if (hasDataContainer.cat1 === 0) {
+				if ( hasDataContainer.doc ) {
+					// 词条有数据，将分类ul隐藏
+					box.find('.lve_c ul.pic_ul').hide()
+				}
+			} else if (hasDataContainer.doc === 0) {
+				if ( hasDataContainer.cat1 ) {
+					// 分类有数据，将词条ul隐藏
+					box.find('.lve_c ul.ul_pic').hide()
+				}
+			}
+			
+			callback()
+			
+			// 设置下拉按钮状态
+			setXLBtnState()
+		} else {
+			// 提示错误信息
+			
+		}
+	}
+	
+	// 渲染二级分类数据
+	render.categoryList3 = function(data, box) {
+		logger(['设置二级分类数据', data])
+		
+		var html = ''
+		$.each(data.list, function(i, row) {
+			html += '<li><a value="'+row.id+'" title="'+row.title+'">'+cutstr(row.title, 10)+'</a></li>'
+		})
+		
+		box.find('.lve2_t ul:first').html(html)
+		
+		// 设置分页
+		logger(['二级分类的分页数据', data.page])
+		html = getSimplePageHtml(data.page)
+		logger(['设置二级分类分页', 'html: '+html])
+		box.find('.lve2_t .page').html(html)
+	}
+	
+	// 渲染三级分类数据
+	render.categoryList2 = function(data, box) {
+		logger(['设置三级分类数据', data])
+
+		var html = ''
+		$.each(data.list, function(i, row) {
+			html += '<li><a value="'+row.id+'" title="'+row.title+'">'+cutstr(row.title, 10)+'</a></li>'
+		})
+		
+		var ul = box.find('.lve3_t ul:first')
+		ul.html(html)
+		
+		// 设置分页
+		html = getSimplePageHtml(data.page)
+		logger(['设置三级分类分页', html])
+		box.find('.lve3_t .page').html(html)
+	}
+	
+	// 渲染词条数据
+	render.docList = function(data, box) {
+		logger(['设置词条数据', data])
+		
+		// 隐藏分类ul和引导内容
+		box.find('.lve_c ul.pic_ul').hide()
+		box.find('.build-info').hide()
+		
+		box.find('.lve_c ul.ul_pic').show()
+		var html = ''
+		$.each(data.list, function(i, row) {
+			html += '<li><a href="http://www.baike.com/wiki/'+encodeURI(row.title)+'" target="_blank" class="aimg"><img src="'+row.url+'" title="'+row.title+'"></a><a target="_blank" title="'+row.title+'" href="http://www.baike.com/wiki/'+encodeURI(row.title)+'">'+cutstr(row.title, 18)+'</a></li>'
+		})
+		
+		box.find('.lve_c ul.ul_pic').html(html)
+		
+		// 设置分页
+		html = getPageHtml(data.page, 'doc')
+		logger(['设置词条分页', data.page, html])
+		box.find('#flipover').html(html).show()
+	}
+	
+	// 渲染词条区域可能存在的分类数据
+	render.categoryList1 = function(data, box) {
+		// console.log(data)
+
+		// 隐藏图片ul和引导内容
+		box.find('.lve_c ul.ul_pic').hide()
+		box.find('.build-info').hide()
+		
+		box.find('.lve_c ul.pic_ul').show()
+		var html = ''
+		$.each(data.list, function(i, row) {
+			html += '<li><a href="'+row.url+'" value="'+row.id+'" class="aimg"  target="_blank"><img src="http://static.hudong.com/31/68/26100000006141139597689549533.gif" width="115" height="85"></a><p class="tit"><a href="'+row.url+'" target="_blank">'+cutstr(row.title, 16)+'</a></p></li>'
+		})
+		
+		box.find('.lve_c ul.pic_ul').html(html)
+		
+		// 设置分页
+		html = getPageHtml(data.page, 'category')
+		logger(['设置四级分类分页', data.page, 'htm:'+html])
+		box.find('#flipover').html(html).show()
+	}
+	
+	// 设置简单分页
+	/*
+	@pageData = {
+		"pageNum": 2,
+		"pageSize": 14,
+		"pageNow": 14,
+		"pageCount": 2,
+		"currentPageSize": 14
+	}
+	*/
+	function getSimplePageHtml(pageData) {
+		var html = ''
+		if (pageData && typeof pageData === 'object') {
+			html = PageUtils.genSimplePage(pageData.pageNum, pageData.pageCount, "ago", "after")
+		}
+		
+		return html
+	}
+	
+	function getPageHtml(pageData, dataType) {
+		var html = ''
+		if (pageData && typeof pageData === 'object') {
+			html = PageUtils.genCommomPage(pageData.pageNum, pageData.pageCount, 5, "ago", '', '', "after")
+		}
+		
+		if ( dataType === 'doc' ) {
+			html = '<em>共有'+pageData.pageTotle+'个词条</em>' + html
+		} else {
+			html = '<em>共有'+pageData.pageTotle+'个分类</em>' + html
+		}
+		return html
+	}
+	
+	
+	
+	// 设置分类页码的点击事件
+	// 注意，点击分页后，要保持下拉按钮处于可用状态
+	// 比如第二页的数据可能就3 4个，也需要保持下来按钮可用
+	function category_page_click(e) {
+		var target = $(e.target)
+		var pn = target.attr('value')
+		if ( !pn ) {
+			return
+		}
+		if (target.is('.ago')) {
+			logger('点击上一页')
+			
+		} else if (target.is('.after')) (
+			logger('点击下一页')
+			
+		)
+		
+		getCategoryPageData($(this).closest('.t_w').find('div ul'), pn)
+		
+		return false
+	}
+	
+	// 词条数据页码的点击事件
+	// 需要判断当前是词条还是分类的分页
+	function flipover_page_click(e) {
+		var post = {}
+		var box = $(this).closest('.classification')
+		post.action = 'ajaxCategoryDoc'
+		post.pageNum = $(this).attr('value')
+		post.order = 1
+		
+		// 上一级的分类id
+		if (box.find('.lve3_t li').length) {
+			post.categoryId = box.find('.lve3_t ul:first').data('focus')
+		} else {
+			post.categoryId = box.find('.lve2_t ul:first').data('focus')
+		}
+		
+		if ( box.find('.lve_c ul.pic_ul').is(':visible') ) {
+			logger('获取四级分类的某页数据')
+			post.dataType = 'category'
+			post.focus = box.find('.lve_c .pic_ul').data('focus')
+		} else {
+			logger('获取词条的某页数据')
+			post.dataType = 'doc'
+			post.focus = box.find('.lve_c .ul_pic').data('focus')
+		}
+		
+		getData(dataUrl, post, function(data) {
+			
+			if ( data && data.status == 1 && data.value.length ) {
+				
+				if ( post.dataType === 'category' ) {
+					logger(['分类分页返回值', data])
+					render.categoryList4(data.value[0], box)
+					
+					// 分页后，需高亮当前分类
+					box.find('.lve_c > .pic_ul li a[value='+post.focus+']').closest('li').addClass('current')
+				} else {
+					logger(['词条分页返回值', data])
+					render.docList(data.value[0], box)
+					
+					// 分页后，需高亮当前词条
+					box.find('.lve_c > .ul_pic li a[title='+post.focus+']').closest('li').addClass('current')
+				}
+				
+			} else {
+				if ( post.dataType === 'category' ) {
+					logger(['分类分页数据错误', data])
+				} else {
+					logger(['词条分页数据错误', data])
+				}
+				
+			}
+		})
+	}
+	
+	// 获取分类的某页数据
+	// 注意：需高亮当前分类
+	function getCategoryPageData($ul, pn) {
+		var o = $(this)
+			, post = {}
+			, box = $ul.closest('.classification')
+			
+		post.focus = $ul.data('focus')
+		post.action = 'ajaxCategoryDoc'
+		post.dataType = 'category'
+		post.pageNum = pn
+		
+		// 判断是二级/三级分类
+		
+		if ( $ul.closest('.lve2_t').length ) {
+		// 点击二级分类，获取一级分类焦点分类id，默认0
+		
+			post.categoryId = box.find('.lve1_t li.bold a').attr('value') || 0
+			post.order = 3
+			
+		} else if ( $ul.closest('.lve3_t').length ) {
+		// 点击三级分类，获取二级分类焦点分类id
+		
+			post.categoryId = box.find('.lve2_t ul:first').data('focus') ||  box.find('.lve1_t li.bold a').attr('value') || 0
+			
+			post.order = 2
+		}
+		
+		getData(dataUrl, post, function(data) {
+			logger(['返回值', data])
+			/*
+			{
+				"status": 1,
+				"msg": "next next neither  docs nor  categorys！",
+				"value": [{
+					"list": [{
+						"id": 125,
+						"title": "二级分类H",
+						"url": ""
+					},
+					{
+						"id": 126,
+						"title": "二级分类H",
+						"url": ""
+					}],
+					"page": {
+						"pageNum": 2,
+						"pageSize": 14,
+						"pageNow": 14,
+						"pageCount": 2,
+						"currentPageSize": 14
+					},
+					"dataType": "category",
+					"order": "2"
+				}]
+			}
+			*/
+			
+			// 分页后，需高亮当前分类
+			var focus
+			if ( post.order === 3 ) {
+				// 二级分类
+				render.categoryList3(data.value[0], box)
+				focus = box.find('.lve2_t ul:first').data('focus')
+				box.find('.lve2_t li a[value='+focus+']').closest('li').addClass('bold')
+				logger(['高亮二级分类', focus])
+			} else {
+				// 三级分类
+				render.categoryList2(data.value[0], box)
+				focus = box.find('.lve3_t ul:first').data('focus')
+				box.find('.lve3_t li a[value='+focus+']').closest('li').addClass('bold')
+				logger(['高亮三级分类', focus])
+			}
+		})
+	}
+
+	NavigatorModleCategoryTree.init()
+	
+	
+	// 获取数据，缓存已经读取的数据
+	var Cache = {}
+	function getData(url, post, callback) {
+		logger(['post', post])
+		var key = ''
+		
+		$.each(post, function(k, v) {
+			key += k + v
+		})
+		
+		if ( Cache[key] ) {
+			logger(['读取缓存数据', Cache[key]])
+			callback(Cache[key])
+		} else {
+			logger(['正在请求数据...'])
+			$.getJSON(url, post, function(data) {
+				if (data.status == 1) {
+					logger(['数据加载成功', data])
+					Cache[key] = data
+					callback(data)
+				} else {
+					logger(['数据加载失败！', data], 'error')
+				}
+			})
+		}
+	}
+	
+	// 字符串截取
+	// 一个汉字算2个字符
+	function cutstr(str, cutlen) {
+		var newStr = ''
+		
+		// 字符数
+		var count = 0
+		
+		for (var i = 0, len = str.length; i < len; i++) {
+			count += 1
+			if ( str.charCodeAt(i) > 255) {
+				count += 1
+			}
+			
+			if ( count >= cutlen ) {
+				break
+			}
+		}
+		
+		newStr = str.substr(0, i+1)
+		
+		if (newStr !==  str) {
+			newStr += '..'
+		}
+		return newStr
+	}
+
+}(jQuery, window, document)
+</script>
+<p></p>
+</div>
+<p></p>
+</body>
+</html>
