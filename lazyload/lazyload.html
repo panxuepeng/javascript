@@ -68,12 +68,17 @@ $.fn.isVisible = function() {
 function log(info, method) {
 	method = method || 'log'
 	
-	if (/[?&]debug\b/.test(location.href) && typeof console === 'object') {
-	
-		if (typeof console[method] === 'function') {
-			console[method](info)
+	if (/[?&]debug\b/.test(window.top.location.href) && typeof console === 'object') {
+		
+		method = console[method] ? method : 'log'
+		
+		if ( data instanceof Array ) {
+			// 将 console.log(['1', {1:1,2:2}, '3'])
+			// 改为：console.log('1', {1:1,2:2}, '3')
+			// 日志的显示效果会更直观一些
+			console[method].apply(console, data)
 		} else {
-			console.error('console.'+method+' not exist.')
+			console[method](data)
 		}
 		
 	}

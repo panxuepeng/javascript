@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dialog Demo</title>
+  <style>
+  
+  #tl-slider-holder {
+	width: 690px;
+	height: 50px;
+	overflow: hidden;
+	position: relative;
+  }
+  
+  #tl-slider-scale-holder {
+	width: 1585px;
+	height: 50px;
+	background-image: url("timeline.jpg");
+	position: absolute;
+	left: -500px;
+  }
+  
+  #tl-slider-dragger {
+	width: 300px;
+	height: 45px;
+	position: absolute;
+	left: 300px;
+	top: 2px;
+	border: 1px solid #CCC;
+  }
+  </style>
+</head>
+<body>
+<div id="tl-slider-holder">
+	<div id="tl-slider-scale-holder"></div>
+	<div id="tl-slider-dragger"></div>
+</div>
+<script src="../../jquery/jquery-1.11.0.min.js"></script>
+
+<script>
+!function($) {
+
+var dom = $(document)
+
+
+// 窗口拖动效果
+// 以点击的那个点为拖动中心
+// 当存在横向滚动条，并且左侧有偏移时，也可以正常拖动
+function mousemove(e) {
+	var left = e.pageX - e.draggingOffset.left - dom.scrollLeft()
+	var boxWidth = $('#tl-slider-holder').width()
+	var draggerWidth = $('#tl-slider-dragger').width()
+	
+	if (0 <= left && left <= boxWidth - draggerWidth) {
+		$(this).css({left: left})
+		var percent = left / boxWidth
+		bgPosition(percent)
+	}
+}
+
+function mouseup() {
+	dom.unbind('mousemove.drag')
+	.unbind('mouseup.drag')
+	.unbind("selectstart.drag")
+}
+
+
+
+// 拖动相关事件
+dom.delegate('#tl-slider-dragger', 'mousedown', function(e) {
+	var self = this
+	var offset = $(self).offset()
+	
+	var draggingOffset = {
+		left: e.pageX - offset.left
+	}
+	
+	dom.bind('mousemove.drag', function(e) {
+		e.draggingOffset = draggingOffset
+		e.boxWidth = $(self).width()
+		mousemove.call(self, e)
+		
+	}).bind('mouseup.drag', function(e) {
+		mouseup.call(self, e)
+		
+	}).bind("selectstart.drag", function() {
+		return false
+	})
+})
+
+// 移动时间轴背景
+// @percent 背景位置百分比
+function bgPosition(percent) {
+	var o = $('#tl-slider-scale-holder')
+	o.css('left', - o.width() * percent)
+}
+
+}(jQuery)
+</script>
+<br>
+</body>
+</html>
