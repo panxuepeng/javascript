@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>作用域</title>
+</head>
+<body>
+用Chrome，f12，看控制台。
+<script>
+// 在var行设置断点，在不同的浏览器查看运行期作用域
+function add(num1, num2) {
+    var sum = num1 + num2
+    return sum
+}
+add()
+</script>
+</body>
+</html>
