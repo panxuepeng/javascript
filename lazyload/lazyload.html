@@ -35,15 +35,16 @@ function find() {
 	
 	if (imgs.length) {
 		imgs.each(function() {
-			$(this).isVisible()
+			var o = $(this)
+			if (o.isVisible()) {
+				o.attr('src', o.data('src'))
+			}
 		})
 	} else {
 		$(window).off('scroll.lazyload')
 		log('图片全部加载完毕，已解除相关滚动事件')
 	}
 }
-
-$(find)
 
 // 判断一个元素是否在可视范围
 // 即图片的顶部或底部在可视范围当中
@@ -59,8 +60,10 @@ $.fn.isVisible = function() {
 	if ( (top >= minHeight && top < maxHeight)
 		|| (top + height >= minHeight && top + height < maxHeight)
 	) {
-		o.attr('src', o.data('src'))
+		return true
 	}
+	
+	return false
 }
 
 // 日志助手

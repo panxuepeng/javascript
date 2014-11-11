@@ -26,6 +26,9 @@
 
 var win = $(window)
 
+	// 弹窗的累计个数
+	, dialogCount = 1
+	
 // 默认值
 var defaults = {
 	title: '提示'
@@ -84,6 +87,8 @@ function Dialog(option) {
 	pos.top = (winH - dialogH) / 2
 	
 	o.css(pos)
+	
+	dialogCount += 1
 }
 
 
