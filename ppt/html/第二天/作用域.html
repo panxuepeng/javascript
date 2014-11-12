@@ -7,16 +7,10 @@
 <body>
 用Chrome，f12，看控制台。
 <script>
-// 使用Chrome浏览器，f12打开控制台
-var i = 1
-function scope(arg1, arg2) {
-    var a = i + arg1  // 2. 设置断点，再查看运行期作用域
+function add(arg1, arg2) {
+    return arg1 + arg2  // 设置断点，查看运行期作用域
 }
-
-// 1. 查看函数被声明后的作用域链属性 [[scope]]
-console.dir(scope)
-
-scope()
+add(1, 1)
 </script>
 </body>
 </html>

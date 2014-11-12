@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>原型和原型链</title>
+  <title>基于原型和原型链的继承</title>
 </head>
 <body>
 f12，看控制台。
@@ -15,8 +15,6 @@ Animal.prototype.runs = function() {
     console.log(this.name + '，跑起来了\n')
 	return this
 }
-
-console.log(new Animal)
 
 function Bird() {
 	this.name = '鸟'
@@ -38,6 +36,7 @@ Crow.prototype.drink = function() {
 
 var crow = new Crow('一只可爱的小乌鸦')
 crow.drink().runs().fly()
+
 console.dir(crow)
 </script>
 </body>
