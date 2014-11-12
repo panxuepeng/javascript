@@ -10,12 +10,13 @@ f12，看控制台。
 function Animal() {
 	this.name = '动物'
 }
+
 Animal.prototype.runs = function() {
     console.log(this.name + '，跑起来了\n')
 	return this
 }
 
-console.dir(new Animal)
+console.log(new Animal)
 
 function Bird() {
 	this.name = '鸟'
