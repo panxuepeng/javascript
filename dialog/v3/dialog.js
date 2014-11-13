@@ -33,8 +33,8 @@ var defaults = {
 	, width: 350
 	, height: 'auto'
 	, autoClose: 0
-	, ok: {text:'确定'}
-	, cancel: {text:'取消'}
+	, ok: {text: '确定', callback: null}
+	, cancel: {text: '取消', callback: null}
 }
 
 var dialogHtml = '<div id="mod-dialog-%dialogCount%" class="mod-dialog" style="left:-2000px; width: %width%px;">'

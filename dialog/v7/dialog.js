@@ -153,7 +153,7 @@ dom.delegate('.mod-dialog', 'click', function(e) {
 // 以点击的那个点为拖动中心
 // 当存在横向滚动条，并且左侧有偏移时，也可以正常拖动
 function mousemove(e) {
-	var left = e.pageX - draggingOffset.left - dom.scrollLeft()
+	var left = e.clientX - draggingOffset.left - dom.scrollLeft()
 	var top = e.clientY - draggingOffset.top
 	
 	$(this).css({

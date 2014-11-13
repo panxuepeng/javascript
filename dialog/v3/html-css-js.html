@@ -18,13 +18,13 @@
 !function($){
 
 $('input[name=ok]').click(function(){
-	dialog('点击 确定 按钮')
+	dialog('浏览器窗口改变时可以自动调整到上下左右居中位置<br><br>但是没有遮罩层')
 })
 
 $('input[name=close]').click(function(){
 	dialog({
 		title: '系统提示'
-		, content: '点击 <b>取消</b> 按钮，自动关闭'
+		, content: '浏览器窗口改变时可以自动调整到上下左右居中位置<br><br>但是没有遮罩层'
 		, width: 400
 		, height: 100
 		, ok: {callback: function() {

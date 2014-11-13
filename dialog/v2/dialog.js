@@ -3,7 +3,8 @@
  * 
  * 1. 构造弹窗html，添加到body尾部
  * 2. 计算显示位置
- * 3. 正常关闭、自动关闭
+ 
+ * +3. 正常关闭、自动关闭
  */
 
 // 外层使用匿名即时函数包裹
@@ -80,7 +81,7 @@ function Dialog(option) {
 	
 	dialogCount += 1
 	
-	// 自动关闭
+	// 增加自动关闭
 	if ( option.autoClose ) {
 		setTimeout(function() {
 			// 这里使用 this.close() 可以吗，为什么？
@@ -89,7 +90,7 @@ function Dialog(option) {
 	}
 }
 
-// 事件委托
+// 事件委托，处理确定、取消及关闭按钮的点击事件
 dom.delegate('.mod-dialog', 'click', function(e) {
 
 	var target = $(e.target)
@@ -106,6 +107,9 @@ $.extend(Dialog.prototype, {
 		this.$el.remove()
 	},
 	cancel: function() {
+		this.$el.remove()
+	},
+	close: function() {
 		this.$el.remove()
 	}
 })

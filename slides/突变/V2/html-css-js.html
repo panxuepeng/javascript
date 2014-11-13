@@ -39,10 +39,12 @@ function start() {
 	timer = setInterval(function() {
 		change()
 	}, 2000)
+	console.log('start')
 }
 
 function stop() {
 	clearInterval(timer)
+	console.log('stop')
 }
 
 // 轮换
@@ -62,9 +64,9 @@ function change() {
 	next.show()
 }
 
-//$('#slides').mouseenter(stop).mouseleave(start)
 start()
 $('#slides').hover(stop, start)
+// $('#slides').mouseenter(stop).mouseleave(start)
 
 }(jQuery)
 </script>

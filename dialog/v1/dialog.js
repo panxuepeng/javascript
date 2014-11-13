@@ -3,6 +3,7 @@
  * 
  * 1. 构造弹窗html，添加到body尾部
  * 2. 计算显示位置
+ 
  */
  
 
@@ -96,5 +97,7 @@ function Dialog(option) {
 window.dialog = function (option) {
 	return new Dialog(option)
 }
+
+// 弹窗不能关闭，着急不？
 
 }(jQuery, window, document)
