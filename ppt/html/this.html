@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>this</title>
+</head>
+<body>
+
+<script>
+var name = 'sijiaomao'
+var person = {
+    name : '四脚猫',
+    getName: function() {
+        setTimeout(function(){ alert(this.name)  }, 0)
+        return this.name
+    }
+}
+var getName = person.getName
+console.log(getName())
+</script>
+
+</body>
+</html>
