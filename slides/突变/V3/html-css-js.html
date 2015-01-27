@@ -9,7 +9,7 @@
 </style>
 </head>
 <body>
-
+<p>增加小按钮，点击可跳转功能</p>
 <div id="slides" name="舞台" class="mod-slides">
 	<div name="胶片" class="mod-slides-list">
 		<div class="mod-slides-item current"><img src="../../image/1.jpg"></div>
@@ -34,18 +34,21 @@ var timer = 0
 // 图片列表
 var items = $('#slides .mod-slides-item')
 
+// 小按钮区域
 var indexArea = $('#slides .mod-slides-index')
+
+// 小按钮
 var btn = indexArea.children().eq(0)
 
-// 清空按钮区域
+// 清空小按钮区域
 indexArea.empty()
 
-// 根据图片个数，填充相等个数的按钮
+// 根据图片个数，填充相等个数的小按钮
 items.each(function() {
 	indexArea.append(btn.clone())
 })
 
-// 让第一个处于显示状态
+// 让第一个图片和小按钮处于当前活动状态
 indexArea.children().eq(0).addClass('current')
 items.eq(0).addClass('current')
 
@@ -61,23 +64,29 @@ function stop() {
 }
 
 // 轮换
+// 增加可以跳转到指定图片
 function change(index) {
 	var current = items.filter('.current') 
 	index = index || current.next().index()
 	
+	// index() 方法如果找不到匹配的元素，则返回-1
+	// 此时将其转移到第一个元素
 	if (index <= 0) {
 		index = 0
 	}
-	
+	//console.log(index)
 	var next = items.eq(index)
-	console.log(index)
-	// 隐藏当前
+	
+	// 隐藏当前图片
 	current.removeClass('current')
 	
-	// 显示下一个
+	// 显示下一个图片
 	next.addClass('current')
 	
+	// 删除当前按钮的current样式
 	$('#slides .mod-slides-index .current').removeClass('current')
+	
+	// 给指定位置的按钮增加current样式名
 	$('#slides .mod-slides-index a').eq(index).addClass('current')
 }
 

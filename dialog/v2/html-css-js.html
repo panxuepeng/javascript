@@ -24,16 +24,16 @@
 !function($){
 
 $('input[name=ok]').click(function(){
-	dialog('点击 确定 按钮')
+	dialog('可以关闭了耶<br><br>但是窗口大小发生变坏时，弹窗不能自动居中显示。')
 })
 
 $('input[name=close]').click(function(){
 	dialog({
 		title: '系统提示'
-		, content: '点击 <b>取消</b> 按钮，自动关闭'
+		, content: '可以<b>自动</b>关闭了耶<br><br>但是不能自定义确定和取消等事件'
 		, width: 400
 		, height: 100
-		, autoClose: 2000
+		, autoClose: 3000
 	})
 })
 

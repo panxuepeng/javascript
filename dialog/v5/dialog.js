@@ -137,7 +137,7 @@ dom.delegate('.mod-dialog', 'click', function(e) {
 // 窗口拖动效果
 
 function mousemove(e) {
-	var left = e.pageX
+	var left = e.clientX
 	var top = e.clientY
 	
 	$(this).css({

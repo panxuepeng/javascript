@@ -9,7 +9,7 @@
 </style>
 </head>
 <body>
-
+<p>增加鼠标触摸时暂停、离开时恢复轮换功能</p>
 <div id="slides" name="舞台" class="mod-slides">
 	<div name="胶片" class="mod-slides-list">
 		<div class="mod-slides-item"><img src="../../image/1.jpg"></div>
@@ -39,10 +39,12 @@ function start() {
 	timer = setInterval(function() {
 		change()
 	}, 2000)
+	console.log('start')
 }
 
 function stop() {
 	clearInterval(timer)
+	console.log('stop')
 }
 
 // 轮换
@@ -62,9 +64,9 @@ function change() {
 	next.show()
 }
 
-//$('#slides').mouseenter(stop).mouseleave(start)
 start()
 $('#slides').hover(stop, start)
+// $('#slides').mouseenter(stop).mouseleave(start)
 
 }(jQuery)
 </script>

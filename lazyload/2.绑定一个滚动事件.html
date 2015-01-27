@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片延迟加载</title>
+</head>
+<body>
+<div id="images"></div>
+
+<script src="../jquery/jquery-1.11.0.min.js"></script>
+<script>
+// 构建图片列表
+var html = []
+for (var i=0; i< 10; i++) {
+	html.push('<p><img data-src="image/'+(i%5)+'.jpg?'+i+'" width="560" height="305"></p>')
+}
+
+$('div').html(html.join(''))
+
+// 滚动事件
+$(window).on('scroll', function() {	
+	alert('onscroll')
+})
+
+</script>
+</body>
+</html>

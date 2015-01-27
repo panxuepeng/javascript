@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片延迟加载</title>
+</head>
+<body>
+<div id="images"></div>
+
+<script src="../jquery/jquery-1.11.0.min.js"></script>
+<script>
+// 构建图片列表
+var html = []
+for (var i=0; i< 10; i++) {
+	html.push('<p><img data-src="image/'+(i%5)+'.jpg?'+i+'" width="560" height="305"></p>')
+}
+
+$('div').html(html.join(''))
+
+// 判断一个元素是否在可视范围
+// 即图片的顶部或底部在可视范围当中
+$.fn.isVisible = function() {
+	var o = this
+	
+	// 可视范围边界
+	var minHeight = $(window).scrollTop()
+	var maxHeight = minHeight + $(window).height()
+	
+	// 元素的顶部和底部
+	var elementTop = o.offset().top
+	var elementHeight = o.height()
+	
+	// 比较元素的位置和可视区域
+	if ( (elementTop >= minHeight && elementTop < maxHeight)
+		|| (elementTop + elementHeight >= minHeight && elementTop + elementHeight < maxHeight)
+	) {
+		return true
+	}
+	
+	return false
+}
+
+
+var imgs = $('img');
+
+alert(imgs.first().isVisible() +', '+imgs.last().isVisible()  )
+
+
+</script>
+</body>
+</html>

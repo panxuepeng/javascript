@@ -3,6 +3,7 @@
  * 
  * 1. 构造弹窗html，添加到body尾部
  * 2. 计算显示位置
+ 
  */
  
 
@@ -26,6 +27,9 @@
 
 var win = $(window)
 
+	// 弹窗的累计个数
+	, dialogCount = 1
+	
 // 默认值
 var defaults = {
 	title: '提示'
@@ -84,6 +88,8 @@ function Dialog(option) {
 	pos.top = (winH - dialogH) / 2
 	
 	o.css(pos)
+	
+	dialogCount += 1
 }
 
 
@@ -91,5 +97,7 @@ function Dialog(option) {
 window.dialog = function (option) {
 	return new Dialog(option)
 }
+
+// 弹窗不能关闭，着急不？
 
 }(jQuery, window, document)

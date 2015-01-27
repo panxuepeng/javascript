@@ -1,0 +1,9 @@
+// 得到QQ群空间所有非管理员成员姓名
+// 然后随机排序
+
+$('.icon-group-manage, .icon-group-master').closest('tr').attr('manage', 'yes')
+
+var names = $('.group-memeber tbody.list tr').not('[manage]').find('input.member-card').map(function(){return $(this).val()}).get().sort(function(){return Math.random() > 0.5})
+
+console.log(names.length +', '+ names)
+

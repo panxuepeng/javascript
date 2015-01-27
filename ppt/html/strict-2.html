@@ -1,0 +1,74 @@
+解决错误
+<script>
+"use strict"
+
+!function() {
+    a = 4
+	delete a
+	console.log('a', a)
+}()
+</script>
+
+<script>
+!function() {
+	"use strict"
+	var b = 1
+	delete b
+	console.log('b', b)
+	
+	var testObj = {
+		prop1: 10,
+		prop2: 15,
+		prop1: 20
+	}
+	
+	function testFunc(param1, param1) {
+		return 1
+	}
+	
+	var yield
+	var testoctal = 070
+	
+	function testFunc() {
+		return this
+	}
+	var testthis = testFunc()
+	console.log('testthis', testthis)
+	
+	var eval = 10
+	console.log('eval', eval)
+	
+	
+	for (var i=0; i<3; i++) {
+		function myFunc() {}
+	}
+}()	
+</script>
+
+<script>
+!function() {
+	"use strict"
+	eval("var evalvar = 10")
+	evalvar = 15
+	console.log('evalvar', evalvar)
+	
+	
+	
+	var arguments = 10
+	
+	
+	function testArgs(oneArg) {
+		arguments[0] = 20
+		
+		return oneArg
+	}
+	// 打印出什么？
+	console.log(testArgs(2))
+	
+	with(Math) {
+		var x = cos(3)
+		var y = tan(7)
+	}
+	console.log(x, y)
+}()
+</script>

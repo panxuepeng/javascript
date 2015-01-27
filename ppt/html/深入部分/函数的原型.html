@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>函数的原型</title>
+</head>
+<body>
+f12，看控制台。
+<script>
+var obj = {name: '四脚猫'}
+function getName() {
+	console.log(this.name)
+}
+
+// 问题：Animal.call 方法来自哪？
+getName.call(obj)
+
+console.dir(getName)
+console.log(getName.__proto__  === Function.prototype)
+console.log(Function.prototype.__proto__  === Object.prototype)
+</script>
+</body>
+</html>

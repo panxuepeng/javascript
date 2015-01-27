@@ -108,7 +108,7 @@ function Dialog(option) {
 		}, option.autoClose)
 	}
 	
-	// 遮罩层
+	// 增加遮罩层
 	if ( option.lock ) {
 		$('body').append('<div class="mod-overlay"></div>')
 	}
@@ -145,6 +145,8 @@ $.extend(Dialog.prototype, {
 	},
 	close: function() {
 		this.$el.remove()
+		
+		// 关闭时，删除遮罩层
 		$('.mod-overlay').remove()
 	}
 })
