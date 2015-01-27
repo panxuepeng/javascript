@@ -1,5 +1,4 @@
 <script>
-// "use strict"
 // 控制台输出什么？
 
 !function() {
@@ -42,11 +41,32 @@
 	for (var i=0; i<3; i++) {
 		function myFunc() {}
 	}
-	
-	
+}()	
+</script>
+
+<script>
+!function() {
 	eval("var evalvar = 10")
 	evalvar = 15
 	console.log('evalvar', evalvar)
 	
+	
+	
+	var arguments = 10
+	
+	
+	function testArgs(oneArg) {
+		arguments[0] = 20
+		
+		return oneArg
+	}
+	
+	console.log(testArgs(2))
+	
+	with(Math) {
+		var x = cos(3)
+		var y = tan(7)
+	}
+	console.log(x, y)
 }()
 </script>
